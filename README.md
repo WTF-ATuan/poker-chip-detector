@@ -26,12 +26,18 @@ pip install -r requirements.txt
 ## Usage
 
 ```bash
-python cli.py \
-  --image data/example1.jpg \
-  --denoms '{"red":5000,"pink":1000,"green":500}' \
-  --per_stack 20 \
-  --bb 2000 \
-  --singles_roi "100,400,300,600"
+# 1) 產生偽標註與可視化
+source .venv311/bin/activate
+python bootstrap_zero_shot.py
+
+# 2) 建立 YOLO 資料集結構
+python prepare_yolo_dataset.py
+
+# 3) 訓練 YOLOv8n
+yolo detect train model=yolov8n.pt data=data/yolo/dataset.yaml imgsz=640 epochs=60 batch=8 workers=0 amp=False
+
+# 4) 預測可視化
+yolo detect predict model=runs/detect/train/weights/best.pt source=data/yolo/val/images save
 ```
 
 ### Parameters

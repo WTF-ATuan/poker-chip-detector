@@ -39,8 +39,12 @@ OUT_DEBUG_DIR = DATA_DIR / "debug"
 class DetectionConfig:
     model_name: str = "google/owlvit-base-patch32"
     text_queries: List[List[str]] = None
-    score_threshold: float = 0.05
+    score_threshold: float = 0.02
     iou_nms_threshold: float = 0.50
+    # Noise-reduction rules
+    min_rel_area: float = 0.0006  # boxes smaller than this fraction of image area are dropped
+    min_aspect_ratio: float = 0.5
+    max_aspect_ratio: float = 2.0
 
     def __post_init__(self) -> None:
         if self.text_queries is None:
@@ -113,10 +117,37 @@ def run_inference_on_image(img_path: Path, processor: OwlViTProcessor, model: Ow
     scores_kept = scores_t[keep_idx].cpu().numpy()
     labels_kept = labels.detach()[keep_idx].cpu().numpy().astype(int)
 
+    # Apply simple size/aspect filtering to reduce noise
+    img_area = float(width * height)
+    filtered_boxes = []
+    filtered_scores = []
+    filtered_labels = []
+    for (xmin, ymin, xmax, ymax), score, lab in zip(boxes_kept, scores_kept, labels_kept):
+        w = max(0.0, float(xmax - xmin))
+        h = max(0.0, float(ymax - ymin))
+        if w <= 1.0 or h <= 1.0:
+            continue
+        area = w * h
+        if area < cfg.min_rel_area * img_area:
+            continue
+        aspect = w / h
+        if aspect < cfg.min_aspect_ratio or aspect > cfg.max_aspect_ratio:
+            continue
+        filtered_boxes.append([xmin, ymin, xmax, ymax])
+        filtered_scores.append(float(score))
+        filtered_labels.append(int(lab))
+
+    if len(filtered_boxes) == 0:
+        return sv.Detections(
+            xyxy=np.zeros((0, 4), dtype=float),
+            confidence=np.zeros((0,), dtype=float),
+            class_id=np.zeros((0,), dtype=int),
+        )
+
     detections = sv.Detections(
-        xyxy=boxes_kept,
-        confidence=scores_kept,
-        class_id=labels_kept,
+        xyxy=np.array(filtered_boxes, dtype=float),
+        confidence=np.array(filtered_scores, dtype=float),
+        class_id=np.array(filtered_labels, dtype=int),
     )
     return detections
 
