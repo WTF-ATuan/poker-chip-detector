@@ -10,6 +10,7 @@ import cv2
 import numpy as np
 from typing import Dict, List, Tuple, Any
 import math
+import os
 
 
 def preprocess_image(image_path: str) -> np.ndarray:
@@ -29,55 +30,121 @@ def preprocess_image(image_path: str) -> np.ndarray:
     return img
 
 
-def detect_circles(img: np.ndarray) -> List[Tuple[int, int, int]]:
-    """Detect circles in the image using HoughCircles."""
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    
-    # Apply Gaussian blur to reduce noise
-    blurred = cv2.GaussianBlur(gray, (9, 9), 2)
-    
-    # Detect circles
-    circles = cv2.HoughCircles(
-        blurred,
-        cv2.HOUGH_GRADIENT,
-        dp=1,
-        minDist=30,
-        param1=50,
-        param2=30,
-        minRadius=10,
-        maxRadius=100
-    )
-    
-    if circles is not None:
-        circles = np.round(circles[0, :]).astype("int")
-        return [(x, y, r) for x, y, r in circles]
-    
-    return []
-
-
-def classify_color(img: np.ndarray, x: int, y: int, r: int) -> str:
-    """Classify chip color based on HSV average in the circle region."""
-    # Create mask for the circle
-    mask = np.zeros(img.shape[:2], dtype=np.uint8)
-    cv2.circle(mask, (x, y), r, 255, -1)
-    
-    # Convert to HSV
+def detect_chip_stacks(img: np.ndarray, color_name: str) -> List[Tuple[int, int, int, int]]:
+    """
+    Detect chip stacks using contour analysis instead of circle detection.
+    Returns list of (x, y, width, height) bounding boxes for chip stacks.
+    """
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
     
-    # Get average HSV values within the circle
-    mean_hsv = cv2.mean(hsv, mask=mask)
-    h, s, v = mean_hsv[:3]
+    # Define HSV ranges for different chip colors (more restrictive)
+    color_ranges = {
+        'red': {
+            'lower': [(0, 100, 100), (160, 100, 100)],  # More restrictive red
+            'upper': [(10, 255, 255), (180, 255, 255)]
+        },
+        'purple': {
+            'lower': [(120, 80, 80)],  # Lower saturation threshold for purple
+            'upper': [(150, 255, 255)]
+        },
+        'pink': {
+            'lower': [(145, 100, 100)],
+            'upper': [(165, 255, 255)]
+        },
+        'green': {
+            'lower': [(45, 100, 100)],
+            'upper': [(75, 255, 255)]
+        }
+    }
     
-    # Simple color classification based on hue
-    if h < 10 or h > 170:  # Red range
-        return "red"
-    elif 140 <= h <= 170:  # Pink/Magenta range
-        return "pink"
-    elif 40 <= h <= 80:    # Green range
-        return "green"
-    else:
-        # Default to red for unknown colors
-        return "red"
+    if color_name not in color_ranges:
+        return []
+    
+    ranges = color_ranges[color_name]
+    mask = np.zeros(img.shape[:2], dtype=np.uint8)
+    
+    # Create mask for this color
+    for lower, upper in zip(ranges['lower'], ranges['upper']):
+        lower_np = np.array(lower)
+        upper_np = np.array(upper)
+        mask += cv2.inRange(hsv, lower_np, upper_np)
+    
+    # Apply morphological operations to clean up
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (7, 7))
+    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
+    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+    
+    # Find contours
+    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    
+    chip_stacks = []
+    for contour in contours:
+        # Calculate contour area
+        area = cv2.contourArea(contour)
+        
+        # Filter by area (too small or too large are likely not chip stacks)
+        if area < 500 or area > 50000:  # Adjust these thresholds as needed
+            continue
+        
+        # Get bounding rectangle
+        x, y, w, h = cv2.boundingRect(contour)
+        
+        # Filter by aspect ratio (chip stacks should be roughly circular/square)
+        aspect_ratio = w / h
+        if aspect_ratio < 0.5 or aspect_ratio > 2.0:
+            continue
+        
+        # Calculate circularity (how close to a circle)
+        perimeter = cv2.arcLength(contour, True)
+        if perimeter == 0:
+            continue
+        circularity = 4 * np.pi * area / (perimeter * perimeter)
+        
+        # Only accept reasonably circular shapes
+        if circularity > 0.3:  # Adjust threshold as needed
+            chip_stacks.append((x, y, w, h))
+    
+    return chip_stacks
+
+
+def create_chip_stack_debug_image(img: np.ndarray, stacks_by_color: Dict[str, List[Tuple[int, int, int, int]]], 
+                                  roi: Tuple[int, int, int, int], output_path: str):
+    """Create debug visualization showing detected chip stacks."""
+    debug_img = img.copy()
+    
+    # Define colors for visualization (BGR format)
+    color_colors = {
+        'red': (0, 0, 255),      # Red
+        'purple': (128, 0, 128),  # Purple
+        'pink': (203, 192, 255),  # Light pink
+        'green': (0, 255, 0)      # Green
+    }
+    
+    # Draw ROI rectangle
+    x1, y1, x2, y2 = roi
+    cv2.rectangle(debug_img, (x1, y1), (x2, y2), (255, 255, 255), 2)
+    cv2.putText(debug_img, "ROI", (x1, y1-10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
+    
+    # Draw chip stacks for each color
+    for color, stacks in stacks_by_color.items():
+        if stacks:
+            stack_color = color_colors.get(color, (255, 255, 255))
+            
+            for i, (x, y, w, h) in enumerate(stacks):
+                # Draw bounding rectangle
+                cv2.rectangle(debug_img, (x, y), (x+w, y+h), stack_color, 2)
+                
+                # Draw label
+                label = f"{color} stack"
+                cv2.putText(debug_img, label, (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, stack_color, 2)
+                
+                # Draw center point
+                center_x, center_y = x + w//2, y + h//2
+                cv2.circle(debug_img, (center_x, center_y), 5, stack_color, -1)
+    
+    # Save debug image
+    cv2.imwrite(output_path, debug_img)
+    print(f"Debug image saved: {output_path}")
 
 
 def is_in_roi(x: int, y: int, roi: Tuple[int, int, int, int]) -> bool:
@@ -86,55 +153,61 @@ def is_in_roi(x: int, y: int, roi: Tuple[int, int, int, int]) -> bool:
     return x1 <= x <= x2 and y1 <= y <= y2
 
 
-def calculate_confidence(circles: List[Tuple[int, int, int]]) -> float:
-    """Calculate confidence based on circle detection consistency."""
-    if not circles:
+def calculate_confidence(circles_by_color: Dict[str, List[Tuple[int, int, int]]]) -> float:
+    """Calculate confidence based on detection consistency across colors."""
+    if not circles_by_color:
         return 0.0
     
-    # Calculate radius variance as a confidence metric
-    radii = [r for _, _, r in circles]
-    mean_radius = np.mean(radii)
-    radius_variance = np.var(radii)
+    total_circles = sum(len(circles) for circles in circles_by_color.values())
+    if total_circles == 0:
+        return 0.0
     
-    # Normalize variance (lower variance = higher confidence)
-    max_variance = mean_radius * 0.5  # Reasonable threshold
-    confidence = max(0.0, min(1.0, 1.0 - (radius_variance / max_variance)))
+    # Calculate radius consistency within each color
+    radius_consistencies = []
+    for color, circles in circles_by_color.items():
+        if len(circles) > 1:
+            radii = [r for _, _, r in circles]
+            mean_radius = np.mean(radii)
+            radius_variance = np.var(radii)
+            consistency = max(0, 1 - (radius_variance / (mean_radius * 0.3)))
+            radius_consistencies.append(consistency)
     
-    return round(confidence, 2)
+    # Overall confidence based on detection count and consistency
+    detection_confidence = min(1.0, total_circles / 50)  # Normalize by expected chip count
+    consistency_confidence = np.mean(radius_consistencies) if radius_consistencies else 0.5
+    
+    return round((detection_confidence + consistency_confidence) / 2, 2)
 
 
 def analyze_chips(image_path: str, denoms: Dict[str, int], per_stack: int, 
                  bb: int, singles_roi: Tuple[int, int, int, int]) -> Dict[str, Any]:
-    """Main analysis function."""
+    """Improved analysis using chip stack detection instead of individual circles."""
     # Load and preprocess image
     img = preprocess_image(image_path)
-    
-    # Detect circles
-    circles = detect_circles(img)
-    
-    if not circles:
-        return {
-            "stacks": {color: 0 for color in denoms.keys()},
-            "singles": {color: 0 for color in denoms.keys()},
-            "counts": {color: 0 for color in denoms.keys()},
-            "value": 0,
-            "bb": 0.0,
-            "confidence": 0.0
-        }
     
     # Initialize counters
     stacks = {color: 0 for color in denoms.keys()}
     singles = {color: 0 for color in denoms.keys()}
+    stacks_by_color = {}
     
-    # Process each detected circle
-    for x, y, r in circles:
-        color = classify_color(img, x, y, r)
+    # Process each color separately
+    for color in denoms.keys():
+        # Detect chip stacks for this color
+        chip_stacks = detect_chip_stacks(img, color)
+        stacks_by_color[color] = chip_stacks
         
-        if color in denoms:
-            if is_in_roi(x, y, singles_roi):
+        # Count stacks vs singles
+        for x, y, w, h in chip_stacks:
+            center_x, center_y = x + w//2, y + h//2
+            if is_in_roi(center_x, center_y, singles_roi):
                 singles[color] += 1
             else:
                 stacks[color] += 1
+    
+    # Create debug image
+    base_name = os.path.splitext(os.path.basename(image_path))[0]
+    debug_path = f"data/debug/{base_name}_debug.jpg"
+    create_chip_stack_debug_image(img, stacks_by_color, singles_roi, debug_path)
     
     # Calculate totals
     counts = {}
@@ -150,8 +223,9 @@ def analyze_chips(image_path: str, denoms: Dict[str, int], per_stack: int,
     # Calculate BB
     bb_value = total_value / bb if bb > 0 else 0.0
     
-    # Calculate confidence
-    confidence = calculate_confidence(circles)
+    # Calculate confidence based on detected stacks
+    total_stacks = sum(len(stacks) for stacks in stacks_by_color.values())
+    confidence = min(1.0, total_stacks / 10) if total_stacks > 0 else 0.0
     
     return {
         "stacks": stacks,
@@ -159,7 +233,9 @@ def analyze_chips(image_path: str, denoms: Dict[str, int], per_stack: int,
         "counts": counts,
         "value": total_value,
         "bb": round(bb_value, 1),
-        "confidence": confidence
+        "confidence": round(confidence, 2),
+        "detected_stacks": {color: len(stacks) for color, stacks in stacks_by_color.items()},
+        "debug_image": debug_path
     }
 
 
