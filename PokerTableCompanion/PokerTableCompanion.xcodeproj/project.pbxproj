@@ -26,6 +26,13 @@
 		A0000000000000000000003A /* SampleAnalysisLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000003B /* SampleAnalysisLoader.swift */; };
 		A0000000000000000000003C /* sample_capture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000003D /* sample_capture.jpg */; };
 		A0000000000000000000003E /* sample_capture_analysis.json in Resources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000003F /* sample_capture_analysis.json */; };
+		A00000000000000000000041 /* CoreMLChipAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000042 /* CoreMLChipAnalyzer.swift */; };
+		A00000000000000000000043 /* ModelOutputMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000044 /* ModelOutputMapper.swift */; };
+		A00000000000000000000045 /* RealtimeCameraAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000046 /* RealtimeCameraAnalyzer.swift */; };
+		A00000000000000000000047 /* RealtimeCaptureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00000000000000000000048 /* RealtimeCaptureViewModel.swift */; };
+		A00000000000000000000049 /* RealtimeCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000004A /* RealtimeCaptureView.swift */; };
+		A0000000000000000000004B /* best.mlpackage in Resources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000004C /* best.mlpackage */; };
+		A0000000000000000000004D /* VisionChipAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0000000000000000000004E /* VisionChipAnalyzer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +57,13 @@
 		A0000000000000000000003B /* SampleAnalysisLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAnalysisLoader.swift; sourceTree = "<group>"; };
 		A0000000000000000000003D /* sample_capture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sample_capture.jpg; sourceTree = "<group>"; };
 		A0000000000000000000003F /* sample_capture_analysis.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sample_capture_analysis.json; sourceTree = "<group>"; };
+		A00000000000000000000042 /* CoreMLChipAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMLChipAnalyzer.swift; sourceTree = "<group>"; };
+		A00000000000000000000044 /* ModelOutputMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelOutputMapper.swift; sourceTree = "<group>"; };
+		A00000000000000000000046 /* RealtimeCameraAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeCameraAnalyzer.swift; sourceTree = "<group>"; };
+		A00000000000000000000048 /* RealtimeCaptureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeCaptureViewModel.swift; sourceTree = "<group>"; };
+		A0000000000000000000004A /* RealtimeCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeCaptureView.swift; sourceTree = "<group>"; };
+		A0000000000000000000004C /* best.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper.mlmodel; path = best.mlpackage; sourceTree = "<group>"; };
+		A0000000000000000000004E /* VisionChipAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionChipAnalyzer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +113,7 @@
 			children = (
 				A00000000000000000000012 /* ChipModels.swift */,
 				A00000000000000000000013 /* AppState.swift */,
+				A0000000000000000000004C /* best.mlpackage */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -107,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				A00000000000000000000015 /* CaptureFlowViewModel.swift */,
+				A00000000000000000000048 /* RealtimeCaptureViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -118,6 +134,10 @@
 				A00000000000000000000039 /* ChipAnalyzer.swift */,
 				A00000000000000000000014 /* MockChipAnalyzer.swift */,
 				A0000000000000000000003B /* SampleAnalysisLoader.swift */,
+				A00000000000000000000042 /* CoreMLChipAnalyzer.swift */,
+				A00000000000000000000044 /* ModelOutputMapper.swift */,
+				A00000000000000000000046 /* RealtimeCameraAnalyzer.swift */,
+				A0000000000000000000004E /* VisionChipAnalyzer.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -142,6 +162,7 @@
 				A0000000000000000000001C /* ViewSupport.swift */,
 				A00000000000000000000033 /* OnboardingFlowView.swift */,
 				A00000000000000000000035 /* CameraPicker.swift */,
+				A0000000000000000000004A /* RealtimeCaptureView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -207,6 +228,7 @@
 				A0000000000000000000000D /* Assets.xcassets in Resources */,
 				A0000000000000000000003C /* sample_capture.jpg in Resources */,
 				A0000000000000000000003E /* sample_capture_analysis.json in Resources */,
+				A0000000000000000000004B /* best.mlpackage in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,7 +246,12 @@
 				A00000000000000000000038 /* ChipAnalyzer.swift in Sources */,
 				A00000000000000000000004 /* MockChipAnalyzer.swift in Sources */,
 				A0000000000000000000003A /* SampleAnalysisLoader.swift in Sources */,
+				A00000000000000000000041 /* CoreMLChipAnalyzer.swift in Sources */,
+				A00000000000000000000043 /* ModelOutputMapper.swift in Sources */,
+				A00000000000000000000045 /* RealtimeCameraAnalyzer.swift in Sources */,
+				A0000000000000000000004D /* VisionChipAnalyzer.swift in Sources */,
 				A00000000000000000000005 /* CaptureFlowViewModel.swift in Sources */,
+				A00000000000000000000047 /* RealtimeCaptureViewModel.swift in Sources */,
 				A00000000000000000000006 /* RootView.swift in Sources */,
 				A00000000000000000000007 /* DashboardView.swift in Sources */,
 				A00000000000000000000008 /* SessionSetupView.swift in Sources */,
@@ -233,6 +260,7 @@
 				A0000000000000000000000C /* ViewSupport.swift in Sources */,
 				A00000000000000000000032 /* OnboardingFlowView.swift in Sources */,
 				A00000000000000000000034 /* CameraPicker.swift in Sources */,
+				A00000000000000000000049 /* RealtimeCaptureView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

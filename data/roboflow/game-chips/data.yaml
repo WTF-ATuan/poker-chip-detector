@@ -1,0 +1,16 @@
+names:
+- '1'
+- '2'
+- '3'
+- '4'
+- '5'
+nc: 5
+roboflow:
+  license: CC BY 4.0
+  project: game-chips
+  url: https://universe.roboflow.com/dorna/game-chips/dataset/1
+  version: 1
+  workspace: dorna
+test: ../test/images
+train: ../train/images
+val: ../valid/images

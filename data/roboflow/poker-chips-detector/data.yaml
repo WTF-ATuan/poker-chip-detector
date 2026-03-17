@@ -1,0 +1,14 @@
+names:
+- '10'
+- '100'
+- '500'
+nc: 3
+roboflow:
+  license: CC BY 4.0
+  project: poker-chips-detector
+  url: https://universe.roboflow.com/urop2023-ar-metaverse/poker-chips-detector/dataset/1
+  version: 1
+  workspace: urop2023-ar-metaverse
+test: ../test/images
+train: ../train/images
+val: ../valid/images

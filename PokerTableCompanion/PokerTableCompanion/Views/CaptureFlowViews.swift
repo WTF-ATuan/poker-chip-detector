@@ -14,7 +14,7 @@ struct CaptureIntroView: View {
                 captureMethods
                 previewCard
                 if viewModel.isAnalyzing {
-                    ProgressView("Analyzing mock image…")
+                    ProgressView("Analyzing image…")
                         .padding(.top, 12)
                 }
 
@@ -36,10 +36,11 @@ struct CaptureIntroView: View {
             CameraPicker { image in
                 guard let image else { return }
                 Task {
-                    await viewModel.runMockAnalysis(
+                    await viewModel.runAnalysis(
                         chipConfigs: appState.chipConfigs,
                         sourceLabel: "Captured from camera",
-                        previewImage: Image(uiImage: image)
+                        previewImage: Image(uiImage: image),
+                        uiImage: image
                     )
                 }
             }
@@ -49,10 +50,11 @@ struct CaptureIntroView: View {
             guard let selectedItem else { return }
             let imageData = try? await selectedItem.loadTransferable(type: Data.self)
             let uiImage = imageData.flatMap(UIImage.init(data:))
-            await viewModel.runMockAnalysis(
+            await viewModel.runAnalysis(
                 chipConfigs: appState.chipConfigs,
                 sourceLabel: "Imported from photo library",
-                previewImage: uiImage.map(Image.init(uiImage:))
+                previewImage: uiImage.map(Image.init(uiImage:)),
+                uiImage: uiImage
             )
         }
     }
@@ -61,7 +63,7 @@ struct CaptureIntroView: View {
         VStack(alignment: .leading, spacing: 12) {
             Text("How to capture")
                 .font(.title3.weight(.semibold))
-            Text("Group the same chip color together, keep full stacks consistent, and leave loose chips visible. The current build uses a stub analyzer so you can test the full user flow.")
+            Text("目前先專注在照片辨識。請盡量俯拍、保持光線均勻，並讓籌碼完整出現在畫面中。")
                 .foregroundStyle(.secondary)
         }
         .cardStyle()
@@ -83,15 +85,6 @@ struct CaptureIntroView: View {
             }
             .buttonStyle(.bordered)
 
-            Button {
-                Task {
-                    await viewModel.loadBundledSample(chipConfigs: appState.chipConfigs)
-                }
-            } label: {
-                Label("Use calibrated sample", systemImage: "scope")
-                    .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.bordered)
         }
     }
 
@@ -104,7 +97,8 @@ struct CaptureIntroView: View {
                     ChipPreviewOverlay(
                         preview: preview,
                         observations: viewModel.observations,
-                        chipConfigs: appState.chipConfigs
+                        chipConfigs: appState.chipConfigs,
+                        imageSize: viewModel.selectedPreviewImageSize
                     )
                     .frame(height: 240)
                 } else {
@@ -128,6 +122,8 @@ struct CaptureIntroView: View {
                     .foregroundStyle(.red)
             }
 
+            debugPanel
+
             if !viewModel.observations.isEmpty {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 8) {
@@ -146,6 +142,39 @@ struct CaptureIntroView: View {
         .cardStyle()
     }
 
+    private var debugPanel: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("Debug")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(.secondary)
+            Text("pipeline: \(viewModel.captureSourceLabel)")
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+            Text("observations: \(viewModel.observations.count), groups: \(viewModel.draftDetections.filter { $0.stackCount > 0 || $0.looseCount > 0 }.count)")
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+            if let best = viewModel.observations.map(\.confidence).max() {
+                Text("max confidence: \(Int(best * 100))%")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
+            if !rawClassSummaryText.isEmpty {
+                Text("raw classes: \(rawClassSummaryText)")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
+            if let rawBest = viewModel.observations.compactMap(\.rawModelClassConfidence).max() {
+                Text("raw max confidence: \(Int(rawBest * 100))%")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .padding(8)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppTheme.cardAlt.opacity(0.45))
+        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+    }
+
     private var groupedObservationLabels: [String] {
         let counts = Dictionary(grouping: viewModel.observations, by: \.predictedColorName)
             .mapValues { $0.count }
@@ -153,6 +182,17 @@ struct CaptureIntroView: View {
             .keys
             .sorted()
             .map { "\($0.capitalized) \(counts[$0] ?? 0)" }
+    }
+
+    private var rawClassSummaryText: String {
+        let labels = viewModel.observations.compactMap(\.rawModelClassLabel)
+        guard !labels.isEmpty else { return "" }
+        let counts = Dictionary(grouping: labels, by: { $0 }).mapValues { $0.count }
+        return counts
+            .keys
+            .sorted()
+            .map { "\($0):\(counts[$0] ?? 0)" }
+            .joined(separator: ", ")
     }
 }
 
@@ -199,21 +239,24 @@ private struct ChipPreviewOverlay: View {
     let preview: Image
     let observations: [ChipTopObservation]
     let chipConfigs: [ChipColorConfig]
+    let imageSize: CGSize?
 
     var body: some View {
         GeometryReader { proxy in
             ZStack {
                 preview
                     .resizable()
-                    .scaledToFill()
+                    .scaledToFit()
                     .frame(width: proxy.size.width, height: proxy.size.height)
-                    .clipped()
+                    .background(Color.black.opacity(0.15))
                     .overlay(Color.black.opacity(0.08))
 
                 ForEach(observations) { observation in
                     ObservationMarker(
                         observation: observation,
                         size: proxy.size,
+                        imageSize: imageSize,
+                        showLabel: observations.count <= 40,
                         strokeColor: color(for: observation)
                     )
                 }
@@ -250,6 +293,8 @@ private struct ChipPreviewOverlay: View {
 private struct ObservationMarker: View {
     let observation: ChipTopObservation
     let size: CGSize
+    let imageSize: CGSize?
+    let showLabel: Bool
     let strokeColor: Color
 
     var body: some View {
@@ -258,28 +303,52 @@ private struct ObservationMarker: View {
                 .stroke(strokeColor, lineWidth: 3)
                 .frame(width: diameter, height: diameter)
 
-            Text(observation.predictedColorName.capitalized)
-                .font(.caption2.weight(.bold))
-                .padding(.horizontal, 6)
-                .padding(.vertical, 4)
-                .background(strokeColor.opacity(0.92))
-                .foregroundStyle(.white)
-                .clipShape(Capsule())
-                .offset(x: -10, y: -28)
+            if showLabel {
+                Text(observation.predictedColorName.capitalized)
+                    .font(.caption2.weight(.bold))
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 4)
+                    .background(strokeColor.opacity(0.92))
+                    .foregroundStyle(.white)
+                    .clipShape(Capsule())
+                    .offset(x: -10, y: -28)
+            }
         }
         .position(x: markerX, y: markerY)
     }
 
     private var diameter: CGFloat {
-        max(26, observation.candidate.normalizedRadius * size.width * 2)
+        max(22, observation.candidate.normalizedRadius * drawRect.width * 2)
     }
 
     private var markerX: CGFloat {
-        observation.candidate.normalizedCenter.x * size.width
+        drawRect.minX + observation.candidate.normalizedCenter.x * drawRect.width
     }
 
     private var markerY: CGFloat {
-        observation.candidate.normalizedCenter.y * size.height
+        drawRect.minY + observation.candidate.normalizedCenter.y * drawRect.height
+    }
+
+    private var drawRect: CGRect {
+        guard let imageSize else {
+            return CGRect(origin: .zero, size: size)
+        }
+        guard imageSize.width > 0, imageSize.height > 0, size.width > 0, size.height > 0 else {
+            return CGRect(origin: .zero, size: size)
+        }
+
+        let imageAspect = imageSize.width / imageSize.height
+        let viewAspect = size.width / size.height
+
+        if imageAspect > viewAspect {
+            let width = size.width
+            let height = width / imageAspect
+            return CGRect(x: 0, y: (size.height - height) / 2, width: width, height: height)
+        } else {
+            let height = size.height
+            let width = height * imageAspect
+            return CGRect(x: (size.width - width) / 2, y: 0, width: width, height: height)
+        }
     }
 }
 

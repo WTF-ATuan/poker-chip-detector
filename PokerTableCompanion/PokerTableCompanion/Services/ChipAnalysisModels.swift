@@ -1,9 +1,11 @@
 import CoreGraphics
 import Foundation
+import UIKit
 
 struct ChipAnalysisRequest {
     var chipConfigs: [ChipColorConfig]
     var sourceLabel: String
+    var image: UIImage?
 }
 
 struct ChipTopCandidate: Identifiable, Hashable {
@@ -38,6 +40,8 @@ struct ChipTopObservation: Identifiable, Hashable {
     var predictedColorName: String
     var visibleTopCountContribution: Int
     var confidence: Double
+    var rawModelClassLabel: String?
+    var rawModelClassConfidence: Double?
 
     init(
         id: UUID = UUID(),
@@ -45,7 +49,9 @@ struct ChipTopObservation: Identifiable, Hashable {
         predictedChipColorID: UUID,
         predictedColorName: String,
         visibleTopCountContribution: Int = 1,
-        confidence: Double
+        confidence: Double,
+        rawModelClassLabel: String? = nil,
+        rawModelClassConfidence: Double? = nil
     ) {
         self.id = id
         self.candidate = candidate
@@ -53,6 +59,8 @@ struct ChipTopObservation: Identifiable, Hashable {
         self.predictedColorName = predictedColorName
         self.visibleTopCountContribution = visibleTopCountContribution
         self.confidence = confidence
+        self.rawModelClassLabel = rawModelClassLabel
+        self.rawModelClassConfidence = rawModelClassConfidence
     }
 }
 
