@@ -1,0 +1,132 @@
+{
+  "image": "/Users/benson/Downloads/chips/chips pic 8.jpg",
+  "analysis_scale": 1.0,
+  "candidate_count": 20,
+  "visible_top_count_by_color": {
+    "orange": 3,
+    "pink": 1,
+    "black": 1
+  },
+  "observations": [
+    {
+      "center": {
+        "x": 393,
+        "y": 108
+      },
+      "radius": 54,
+      "candidate_confidence": 0.54,
+      "profile_metrics": {
+        "ring_sat": 127.02,
+        "center_val": 191.62,
+        "sat_delta": 19.97,
+        "val_delta": 46.89,
+        "score": 11.32
+      },
+      "predicted_color": "orange",
+      "color_confidence": 0.729,
+      "distance_scores": {
+        "orange": 37.94,
+        "pink": 55.73,
+        "green": 132.94,
+        "purple": 141.63,
+        "black": 78.4
+      }
+    },
+    {
+      "center": {
+        "x": 571,
+        "y": 372
+      },
+      "radius": 59,
+      "candidate_confidence": 0.59,
+      "profile_metrics": {
+        "ring_sat": 140.58,
+        "center_val": 230.85,
+        "sat_delta": 55.93,
+        "val_delta": 9.76,
+        "score": 13.33
+      },
+      "predicted_color": "pink",
+      "color_confidence": 0.807,
+      "distance_scores": {
+        "orange": 43.61,
+        "pink": 26.99,
+        "green": 143.41,
+        "purple": 163.55,
+        "black": 119.45
+      }
+    },
+    {
+      "center": {
+        "x": 667,
+        "y": 477
+      },
+      "radius": 68,
+      "candidate_confidence": 0.68,
+      "profile_metrics": {
+        "ring_sat": 164.9,
+        "center_val": 194.31,
+        "sat_delta": 22.9,
+        "val_delta": -25.48,
+        "score": 10.86
+      },
+      "predicted_color": "orange",
+      "color_confidence": 0.935,
+      "distance_scores": {
+        "orange": 9.04,
+        "pink": 45.27,
+        "green": 154.06,
+        "purple": 149.38,
+        "black": 93.25
+      }
+    },
+    {
+      "center": {
+        "x": 494,
+        "y": 492
+      },
+      "radius": 69,
+      "candidate_confidence": 0.69,
+      "profile_metrics": {
+        "ring_sat": 179.7,
+        "center_val": 239.02,
+        "sat_delta": 34.03,
+        "val_delta": 12.69,
+        "score": 14.05
+      },
+      "predicted_color": "orange",
+      "color_confidence": 0.965,
+      "distance_scores": {
+        "orange": 4.96,
+        "pink": 54.99,
+        "green": 162.1,
+        "purple": 160.0,
+        "black": 101.21
+      }
+    },
+    {
+      "center": {
+        "x": 903,
+        "y": 524
+      },
+      "radius": 58,
+      "candidate_confidence": 0.58,
+      "profile_metrics": {
+        "ring_sat": 122.86,
+        "center_val": 113.75,
+        "sat_delta": 13.68,
+        "val_delta": -12.32,
+        "score": 7.5
+      },
+      "predicted_color": "black",
+      "color_confidence": 0.554,
+      "distance_scores": {
+        "orange": 69.49,
+        "pink": 87.9,
+        "green": 139.33,
+        "purple": 155.83,
+        "black": 62.47
+      }
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "image": "/Users/benson/Downloads/chips/chips pic 2.jpg",
+  "analysis_scale": 1.0,
+  "candidate_count": 16,
+  "visible_top_count_by_color": {
+    "green": 4
+  },
+  "observations": [
+    {
+      "center": {
+        "x": 178,
+        "y": 207
+      },
+      "radius": 77,
+      "candidate_confidence": 0.77,
+      "profile_metrics": {
+        "ring_sat": 113.7,
+        "center_val": 161.51,
+        "sat_delta": 25.79,
+        "val_delta": 2.12,
+        "score": 9.13
+      },
+      "predicted_color": "green",
+      "color_confidence": 0.466,
+      "distance_scores": {
+        "orange": 202.99,
+        "pink": 180.61,
+        "green": 74.75,
+        "purple": 93.41,
+        "black": 227.42
+      }
+    },
+    {
+      "center": {
+        "x": 306,
+        "y": 279
+      },
+      "radius": 40,
+      "candidate_confidence": 0.4,
+      "profile_metrics": {
+        "ring_sat": 104.76,
+        "center_val": 123.82,
+        "sat_delta": 33.88,
+        "val_delta": -23.85,
+        "score": 7.65
+      },
+      "predicted_color": "green",
+      "color_confidence": 0.415,
+      "distance_scores": {
+        "orange": 214.72,
+        "pink": 213.84,
+        "green": 81.95,
+        "purple": 85.27,
+        "black": 193.08
+      }
+    },
+    {
+      "center": {
+        "x": 202,
+        "y": 288
+      },
+      "radius": 68,
+      "candidate_confidence": 0.68,
+      "profile_metrics": {
+        "ring_sat": 120.44,
+        "center_val": 107.83,
+        "sat_delta": 35.53,
+        "val_delta": -21.38,
+        "score": 8.11
+      },
+      "predicted_color": "green",
+      "color_confidence": 0.372,
+      "distance_scores": {
+        "orange": 218.86,
+        "pink": 223.1,
+        "green": 87.89,
+        "purple": 91.55,
+        "black": 184.93
+      }
+    },
+    {
+      "center": {
+        "x": 398,
+        "y": 289
+      },
+      "radius": 61,
+      "candidate_confidence": 0.61,
+      "profile_metrics": {
+        "ring_sat": 114.2,
+        "center_val": 104.27,
+        "sat_delta": 27.56,
+        "val_delta": -28.86,
+        "score": 7.17
+      },
+      "predicted_color": "green",
+      "color_confidence": 0.358,
+      "distance_scores": {
+        "orange": 221.38,
+        "pink": 226.05,
+        "green": 89.86,
+        "purple": 90.68,
+        "black": 183.1
+      }
+    }
+  ]
+}

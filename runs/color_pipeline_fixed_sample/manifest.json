@@ -1,0 +1,12 @@
+[
+  {
+    "image": "/Users/benson/Downloads/chips/Image 1024.jpg",
+    "debug": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_fixed_sample/Image_1024_debug.jpg",
+    "json": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_fixed_sample/Image_1024.json",
+    "candidate_count": 20,
+    "visible_top_count_by_color": {
+      "orange": 8,
+      "pink": 5
+    }
+  }
+]

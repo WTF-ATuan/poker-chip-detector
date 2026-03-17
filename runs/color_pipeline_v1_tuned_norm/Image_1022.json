@@ -1,0 +1,248 @@
+{
+  "image": "/Users/benson/Downloads/chips/Image 1022.jpg",
+  "analysis_scale": 0.3968253968253968,
+  "analysis_dimensions": {
+    "width": 1200,
+    "height": 1600
+  },
+  "candidate_count": 20,
+  "visible_top_count_by_color": {
+    "pink": 4,
+    "orange": 3,
+    "green": 1
+  },
+  "observations": [
+    {
+      "center": {
+        "x": 406,
+        "y": 396
+      },
+      "normalized_center": {
+        "x": 0.33833,
+        "y": 0.2475
+      },
+      "radius": 74,
+      "normalized_radius": 0.06167,
+      "candidate_confidence": 0.74,
+      "profile_metrics": {
+        "ring_sat": 133.52,
+        "center_val": 234.23,
+        "sat_delta": 36.07,
+        "val_delta": 8.32,
+        "score": 12.08
+      },
+      "predicted_color": "pink",
+      "color_confidence": 0.766,
+      "distance_scores": {
+        "orange": 38.6,
+        "pink": 32.74,
+        "green": 133.58,
+        "purple": 155.37,
+        "black": 108.23
+      }
+    },
+    {
+      "center": {
+        "x": 617,
+        "y": 418
+      },
+      "normalized_center": {
+        "x": 0.51417,
+        "y": 0.26125
+      },
+      "radius": 61,
+      "normalized_radius": 0.05083,
+      "candidate_confidence": 0.61,
+      "profile_metrics": {
+        "ring_sat": 136.03,
+        "center_val": 216.22,
+        "sat_delta": 61.02,
+        "val_delta": -9.69,
+        "score": 12.53
+      },
+      "predicted_color": "orange",
+      "color_confidence": 0.738,
+      "distance_scores": {
+        "orange": 36.73,
+        "pink": 37.59,
+        "green": 129.47,
+        "purple": 150.89,
+        "black": 101.37
+      }
+    },
+    {
+      "center": {
+        "x": 548,
+        "y": 433
+      },
+      "normalized_center": {
+        "x": 0.45667,
+        "y": 0.27063
+      },
+      "radius": 51,
+      "normalized_radius": 0.0425,
+      "candidate_confidence": 0.51,
+      "profile_metrics": {
+        "ring_sat": 123.16,
+        "center_val": 230.15,
+        "sat_delta": 21.4,
+        "val_delta": -2.68,
+        "score": 10.52
+      },
+      "predicted_color": "pink",
+      "color_confidence": 0.762,
+      "distance_scores": {
+        "orange": 66.56,
+        "pink": 33.38,
+        "green": 126.5,
+        "purple": 169.7,
+        "black": 125.91
+      }
+    },
+    {
+      "center": {
+        "x": 643,
+        "y": 543
+      },
+      "normalized_center": {
+        "x": 0.53583,
+        "y": 0.33937
+      },
+      "radius": 77,
+      "normalized_radius": 0.06417,
+      "candidate_confidence": 0.77,
+      "profile_metrics": {
+        "ring_sat": 189.38,
+        "center_val": 195.29,
+        "sat_delta": 47.29,
+        "val_delta": -2.24,
+        "score": 13.78
+      },
+      "predicted_color": "orange",
+      "color_confidence": 0.923,
+      "distance_scores": {
+        "orange": 10.8,
+        "pink": 61.18,
+        "green": 164.18,
+        "purple": 162.03,
+        "black": 98.89
+      }
+    },
+    {
+      "center": {
+        "x": 312,
+        "y": 588
+      },
+      "normalized_center": {
+        "x": 0.26,
+        "y": 0.3675
+      },
+      "radius": 72,
+      "normalized_radius": 0.06,
+      "candidate_confidence": 0.72,
+      "profile_metrics": {
+        "ring_sat": 118.56,
+        "center_val": 228.69,
+        "sat_delta": 23.64,
+        "val_delta": 1.56,
+        "score": 10.55
+      },
+      "predicted_color": "pink",
+      "color_confidence": 0.715,
+      "distance_scores": {
+        "orange": 62.71,
+        "pink": 39.93,
+        "green": 118.46,
+        "purple": 166.98,
+        "black": 120.67
+      }
+    },
+    {
+      "center": {
+        "x": 247,
+        "y": 622
+      },
+      "normalized_center": {
+        "x": 0.20583,
+        "y": 0.38875
+      },
+      "radius": 77,
+      "normalized_radius": 0.06417,
+      "candidate_confidence": 0.77,
+      "profile_metrics": {
+        "ring_sat": 160.0,
+        "center_val": 236.44,
+        "sat_delta": 23.8,
+        "val_delta": 6.15,
+        "score": 12.5
+      },
+      "predicted_color": "orange",
+      "color_confidence": 0.963,
+      "distance_scores": {
+        "orange": 5.14,
+        "pink": 50.14,
+        "green": 157.52,
+        "purple": 158.06,
+        "black": 100.3
+      }
+    },
+    {
+      "center": {
+        "x": 1102,
+        "y": 622
+      },
+      "normalized_center": {
+        "x": 0.91833,
+        "y": 0.38875
+      },
+      "radius": 68,
+      "normalized_radius": 0.05667,
+      "candidate_confidence": 0.68,
+      "profile_metrics": {
+        "ring_sat": 122.42,
+        "center_val": 220.39,
+        "sat_delta": 52.23,
+        "val_delta": -9.51,
+        "score": 11.63
+      },
+      "predicted_color": "pink",
+      "color_confidence": 0.737,
+      "distance_scores": {
+        "orange": 46.55,
+        "pink": 36.89,
+        "green": 124.87,
+        "purple": 153.02,
+        "black": 104.93
+      }
+    },
+    {
+      "center": {
+        "x": 1066,
+        "y": 691
+      },
+      "normalized_center": {
+        "x": 0.88833,
+        "y": 0.43188
+      },
+      "radius": 57,
+      "normalized_radius": 0.0475,
+      "candidate_confidence": 0.57,
+      "profile_metrics": {
+        "ring_sat": 102.49,
+        "center_val": 193.5,
+        "sat_delta": 20.25,
+        "val_delta": 3.06,
+        "score": 9.07
+      },
+      "predicted_color": "green",
+      "color_confidence": 0.467,
+      "distance_scores": {
+        "orange": 92.61,
+        "pink": 83.4,
+        "green": 74.66,
+        "purple": 192.21,
+        "black": 137.77
+      }
+    }
+  ]
+}

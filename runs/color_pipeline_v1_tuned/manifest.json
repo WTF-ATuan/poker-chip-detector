@@ -1,0 +1,143 @@
+[
+  {
+    "image": "/Users/benson/Downloads/chips/Image 1021.jpg",
+    "debug": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/Image_1021_debug.jpg",
+    "json": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/Image_1021.json",
+    "candidate_count": 26,
+    "visible_top_count_by_color": {
+      "orange": 5,
+      "purple": 3
+    }
+  },
+  {
+    "image": "/Users/benson/Downloads/chips/Image 1022.jpg",
+    "debug": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/Image_1022_debug.jpg",
+    "json": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/Image_1022.json",
+    "candidate_count": 20,
+    "visible_top_count_by_color": {
+      "pink": 4,
+      "orange": 3,
+      "green": 1
+    }
+  },
+  {
+    "image": "/Users/benson/Downloads/chips/Image 1023.jpg",
+    "debug": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/Image_1023_debug.jpg",
+    "json": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/Image_1023.json",
+    "candidate_count": 36,
+    "visible_top_count_by_color": {
+      "orange": 7,
+      "pink": 4,
+      "green": 2
+    }
+  },
+  {
+    "image": "/Users/benson/Downloads/chips/Image 1024.jpg",
+    "debug": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/Image_1024_debug.jpg",
+    "json": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/Image_1024.json",
+    "candidate_count": 20,
+    "visible_top_count_by_color": {
+      "orange": 8,
+      "pink": 5
+    }
+  },
+  {
+    "image": "/Users/benson/Downloads/chips/Image 1025.jpg",
+    "debug": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/Image_1025_debug.jpg",
+    "json": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/Image_1025.json",
+    "candidate_count": 15,
+    "visible_top_count_by_color": {
+      "orange": 4,
+      "pink": 4
+    }
+  },
+  {
+    "image": "/Users/benson/Downloads/chips/chips pic 10.jpeg",
+    "debug": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic_10_debug.jpg",
+    "json": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic_10.json",
+    "candidate_count": 21,
+    "visible_top_count_by_color": {
+      "black": 1,
+      "purple": 1
+    }
+  },
+  {
+    "image": "/Users/benson/Downloads/chips/chips pic 2.jpg",
+    "debug": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic_2_debug.jpg",
+    "json": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic_2.json",
+    "candidate_count": 16,
+    "visible_top_count_by_color": {
+      "green": 4
+    }
+  },
+  {
+    "image": "/Users/benson/Downloads/chips/chips pic 3.jpg",
+    "debug": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic_3_debug.jpg",
+    "json": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic_3.json",
+    "candidate_count": 3,
+    "visible_top_count_by_color": {}
+  },
+  {
+    "image": "/Users/benson/Downloads/chips/chips pic 4.jpg",
+    "debug": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic_4_debug.jpg",
+    "json": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic_4.json",
+    "candidate_count": 6,
+    "visible_top_count_by_color": {
+      "pink": 2,
+      "orange": 2
+    }
+  },
+  {
+    "image": "/Users/benson/Downloads/chips/chips pic 5.jpg",
+    "debug": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic_5_debug.jpg",
+    "json": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic_5.json",
+    "candidate_count": 0,
+    "visible_top_count_by_color": {}
+  },
+  {
+    "image": "/Users/benson/Downloads/chips/chips pic 6.jpg",
+    "debug": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic_6_debug.jpg",
+    "json": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic_6.json",
+    "candidate_count": 8,
+    "visible_top_count_by_color": {
+      "purple": 1
+    }
+  },
+  {
+    "image": "/Users/benson/Downloads/chips/chips pic 7.jpg",
+    "debug": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic_7_debug.jpg",
+    "json": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic_7.json",
+    "candidate_count": 7,
+    "visible_top_count_by_color": {
+      "orange": 3
+    }
+  },
+  {
+    "image": "/Users/benson/Downloads/chips/chips pic 8.jpg",
+    "debug": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic_8_debug.jpg",
+    "json": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic_8.json",
+    "candidate_count": 20,
+    "visible_top_count_by_color": {
+      "orange": 3,
+      "pink": 1,
+      "black": 1
+    }
+  },
+  {
+    "image": "/Users/benson/Downloads/chips/chips pic 9.jpeg",
+    "debug": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic_9_debug.jpg",
+    "json": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic_9.json",
+    "candidate_count": 0,
+    "visible_top_count_by_color": {}
+  },
+  {
+    "image": "/Users/benson/Downloads/chips/chips pic1.jpg",
+    "debug": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic1_debug.jpg",
+    "json": "/Users/benson/Documents/GitHub/Poker chips py /runs/color_pipeline_v1_tuned/chips_pic1.json",
+    "candidate_count": 8,
+    "visible_top_count_by_color": {
+      "orange": 1,
+      "pink": 3
+    }
+  }
+]

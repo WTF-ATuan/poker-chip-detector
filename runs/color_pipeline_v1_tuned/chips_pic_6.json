@@ -1,0 +1,34 @@
+{
+  "image": "/Users/benson/Downloads/chips/chips pic 6.jpg",
+  "analysis_scale": 1.0,
+  "candidate_count": 8,
+  "visible_top_count_by_color": {
+    "purple": 1
+  },
+  "observations": [
+    {
+      "center": {
+        "x": 212,
+        "y": 231
+      },
+      "radius": 40,
+      "candidate_confidence": 0.4,
+      "profile_metrics": {
+        "ring_sat": 47.66,
+        "center_val": 143.34,
+        "sat_delta": 19.3,
+        "val_delta": 3.24,
+        "score": 5.84
+      },
+      "predicted_color": "purple",
+      "color_confidence": 0.799,
+      "distance_scores": {
+        "orange": 147.31,
+        "pink": 154.83,
+        "green": 148.78,
+        "purple": 28.13,
+        "black": 134.8
+      }
+    }
+  ]
+}

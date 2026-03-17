@@ -1,0 +1,59 @@
+{
+  "image": "/Users/benson/Downloads/chips/chips pic 10.jpeg",
+  "analysis_scale": 0.5291005291005291,
+  "candidate_count": 21,
+  "visible_top_count_by_color": {
+    "black": 1,
+    "purple": 1
+  },
+  "observations": [
+    {
+      "center": {
+        "x": 1046,
+        "y": 919
+      },
+      "radius": 44,
+      "candidate_confidence": 0.44,
+      "profile_metrics": {
+        "ring_sat": 125.78,
+        "center_val": 83.01,
+        "sat_delta": 16.76,
+        "val_delta": -44.36,
+        "score": 6.2
+      },
+      "predicted_color": "black",
+      "color_confidence": 0.539,
+      "distance_scores": {
+        "orange": 69.14,
+        "pink": 99.94,
+        "green": 199.3,
+        "purple": 118.04,
+        "black": 64.59
+      }
+    },
+    {
+      "center": {
+        "x": 281,
+        "y": 1093
+      },
+      "radius": 65,
+      "candidate_confidence": 0.65,
+      "profile_metrics": {
+        "ring_sat": 99.46,
+        "center_val": 83.38,
+        "sat_delta": 19.89,
+        "val_delta": -21.55,
+        "score": 5.99
+      },
+      "predicted_color": "purple",
+      "color_confidence": 0.411,
+      "distance_scores": {
+        "orange": 210.46,
+        "pink": 219.16,
+        "green": 107.24,
+        "purple": 82.49,
+        "black": 166.02
+      }
+    }
+  ]
+}

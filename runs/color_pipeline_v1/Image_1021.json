@@ -1,0 +1,2649 @@
+{
+  "image": "/Users/benson/Downloads/chips/Image 1021.jpg",
+  "analysis_scale": 0.3968253968253968,
+  "candidate_count": 155,
+  "visible_top_count_by_color": {
+    "purple": 53,
+    "pink": 47,
+    "black": 7,
+    "orange": 39,
+    "green": 9
+  },
+  "observations": [
+    {
+      "center": {
+        "x": 933,
+        "y": 47
+      },
+      "radius": 54,
+      "candidate_confidence": 0.54,
+      "predicted_color": "purple",
+      "color_confidence": 0.404,
+      "distance_scores": {
+        "orange": 216.64,
+        "pink": 219.18,
+        "green": 128.43,
+        "purple": 83.47,
+        "black": 142.96
+      }
+    },
+    {
+      "center": {
+        "x": 1141,
+        "y": 47
+      },
+      "radius": 49,
+      "candidate_confidence": 0.49,
+      "predicted_color": "purple",
+      "color_confidence": 0.415,
+      "distance_scores": {
+        "orange": 216.05,
+        "pink": 219.6,
+        "green": 127.51,
+        "purple": 81.84,
+        "black": 144.88
+      }
+    },
+    {
+      "center": {
+        "x": 725,
+        "y": 70
+      },
+      "radius": 86,
+      "candidate_confidence": 0.86,
+      "predicted_color": "pink",
+      "color_confidence": 0.632,
+      "distance_scores": {
+        "orange": 81.1,
+        "pink": 51.46,
+        "green": 106.35,
+        "purple": 175.5,
+        "black": 127.55
+      }
+    },
+    {
+      "center": {
+        "x": 685,
+        "y": 73
+      },
+      "radius": 37,
+      "candidate_confidence": 0.37,
+      "predicted_color": "pink",
+      "color_confidence": 0.83,
+      "distance_scores": {
+        "orange": 68.59,
+        "pink": 23.76,
+        "green": 156.79,
+        "purple": 168.16,
+        "black": 126.7
+      }
+    },
+    {
+      "center": {
+        "x": 854,
+        "y": 79
+      },
+      "radius": 24,
+      "candidate_confidence": 0.35,
+      "predicted_color": "pink",
+      "color_confidence": 0.583,
+      "distance_scores": {
+        "orange": 103.44,
+        "pink": 58.31,
+        "green": 133.64,
+        "purple": 201.21,
+        "black": 156.44
+      }
+    },
+    {
+      "center": {
+        "x": 900,
+        "y": 80
+      },
+      "radius": 68,
+      "candidate_confidence": 0.68,
+      "predicted_color": "purple",
+      "color_confidence": 0.385,
+      "distance_scores": {
+        "orange": 219.21,
+        "pink": 221.89,
+        "green": 127.46,
+        "purple": 86.15,
+        "black": 143.91
+      }
+    },
+    {
+      "center": {
+        "x": 650,
+        "y": 87
+      },
+      "radius": 54,
+      "candidate_confidence": 0.54,
+      "predicted_color": "pink",
+      "color_confidence": 0.951,
+      "distance_scores": {
+        "orange": 44.7,
+        "pink": 6.85,
+        "green": 151.2,
+        "purple": 144.79,
+        "black": 103.79
+      }
+    },
+    {
+      "center": {
+        "x": 1059,
+        "y": 87
+      },
+      "radius": 93,
+      "candidate_confidence": 0.93,
+      "predicted_color": "purple",
+      "color_confidence": 0.401,
+      "distance_scores": {
+        "orange": 217.42,
+        "pink": 219.87,
+        "green": 129.14,
+        "purple": 83.9,
+        "black": 142.75
+      }
+    },
+    {
+      "center": {
+        "x": 971,
+        "y": 93
+      },
+      "radius": 26,
+      "candidate_confidence": 0.35,
+      "predicted_color": "black",
+      "color_confidence": 0.519,
+      "distance_scores": {
+        "orange": 104.77,
+        "pink": 113.55,
+        "green": 125.5,
+        "purple": 183.35,
+        "black": 67.32
+      }
+    },
+    {
+      "center": {
+        "x": 692,
+        "y": 113
+      },
+      "radius": 63,
+      "candidate_confidence": 0.63,
+      "predicted_color": "pink",
+      "color_confidence": 0.671,
+      "distance_scores": {
+        "orange": 90.93,
+        "pink": 46.1,
+        "green": 139.81,
+        "purple": 189.95,
+        "black": 146.24
+      }
+    },
+    {
+      "center": {
+        "x": 548,
+        "y": 114
+      },
+      "radius": 48,
+      "candidate_confidence": 0.48,
+      "predicted_color": "pink",
+      "color_confidence": 0.672,
+      "distance_scores": {
+        "orange": 89.87,
+        "pink": 45.98,
+        "green": 142.04,
+        "purple": 190.0,
+        "black": 147.14
+      }
+    },
+    {
+      "center": {
+        "x": 999,
+        "y": 117
+      },
+      "radius": 58,
+      "candidate_confidence": 0.58,
+      "predicted_color": "purple",
+      "color_confidence": 0.362,
+      "distance_scores": {
+        "orange": 221.76,
+        "pink": 224.75,
+        "green": 126.22,
+        "purple": 89.29,
+        "black": 144.48
+      }
+    },
+    {
+      "center": {
+        "x": 1075,
+        "y": 122
+      },
+      "radius": 36,
+      "candidate_confidence": 0.36,
+      "predicted_color": "black",
+      "color_confidence": 0.555,
+      "distance_scores": {
+        "orange": 92.0,
+        "pink": 100.79,
+        "green": 131.26,
+        "purple": 171.99,
+        "black": 62.27
+      }
+    },
+    {
+      "center": {
+        "x": 591,
+        "y": 128
+      },
+      "radius": 91,
+      "candidate_confidence": 0.91,
+      "predicted_color": "pink",
+      "color_confidence": 0.811,
+      "distance_scores": {
+        "orange": 67.26,
+        "pink": 26.52,
+        "green": 131.0,
+        "purple": 165.73,
+        "black": 122.03
+      }
+    },
+    {
+      "center": {
+        "x": 952,
+        "y": 132
+      },
+      "radius": 69,
+      "candidate_confidence": 0.69,
+      "predicted_color": "purple",
+      "color_confidence": 0.354,
+      "distance_scores": {
+        "orange": 223.07,
+        "pink": 225.44,
+        "green": 120.02,
+        "purple": 90.43,
+        "black": 150.4
+      }
+    },
+    {
+      "center": {
+        "x": 1172,
+        "y": 132
+      },
+      "radius": 52,
+      "candidate_confidence": 0.52,
+      "predicted_color": "purple",
+      "color_confidence": 0.341,
+      "distance_scores": {
+        "orange": 223.86,
+        "pink": 228.02,
+        "green": 132.88,
+        "purple": 92.27,
+        "black": 138.76
+      }
+    },
+    {
+      "center": {
+        "x": 752,
+        "y": 135
+      },
+      "radius": 94,
+      "candidate_confidence": 0.94,
+      "predicted_color": "pink",
+      "color_confidence": 0.555,
+      "distance_scores": {
+        "orange": 78.75,
+        "pink": 62.35,
+        "green": 101.09,
+        "purple": 168.51,
+        "black": 115.46
+      }
+    },
+    {
+      "center": {
+        "x": 844,
+        "y": 144
+      },
+      "radius": 46,
+      "candidate_confidence": 0.46,
+      "predicted_color": "purple",
+      "color_confidence": 0.359,
+      "distance_scores": {
+        "orange": 221.8,
+        "pink": 224.54,
+        "green": 122.55,
+        "purple": 89.74,
+        "black": 147.45
+      }
+    },
+    {
+      "center": {
+        "x": 879,
+        "y": 155
+      },
+      "radius": 26,
+      "candidate_confidence": 0.35,
+      "predicted_color": "purple",
+      "color_confidence": 0.357,
+      "distance_scores": {
+        "orange": 222.37,
+        "pink": 225.17,
+        "green": 123.14,
+        "purple": 90.05,
+        "black": 147.15
+      }
+    },
+    {
+      "center": {
+        "x": 1113,
+        "y": 160
+      },
+      "radius": 55,
+      "candidate_confidence": 0.55,
+      "predicted_color": "purple",
+      "color_confidence": 0.378,
+      "distance_scores": {
+        "orange": 219.25,
+        "pink": 222.68,
+        "green": 131.49,
+        "purple": 87.06,
+        "black": 139.44
+      }
+    },
+    {
+      "center": {
+        "x": 1069,
+        "y": 163
+      },
+      "radius": 50,
+      "candidate_confidence": 0.5,
+      "predicted_color": "purple",
+      "color_confidence": 0.374,
+      "distance_scores": {
+        "orange": 220.05,
+        "pink": 223.21,
+        "green": 128.56,
+        "purple": 87.66,
+        "black": 142.34
+      }
+    },
+    {
+      "center": {
+        "x": 1146,
+        "y": 168
+      },
+      "radius": 34,
+      "candidate_confidence": 0.35,
+      "predicted_color": "purple",
+      "color_confidence": 0.371,
+      "distance_scores": {
+        "orange": 220.35,
+        "pink": 223.65,
+        "green": 128.93,
+        "purple": 88.06,
+        "black": 141.98
+      }
+    },
+    {
+      "center": {
+        "x": 921,
+        "y": 171
+      },
+      "radius": 28,
+      "candidate_confidence": 0.35,
+      "predicted_color": "purple",
+      "color_confidence": 0.357,
+      "distance_scores": {
+        "orange": 222.4,
+        "pink": 225.06,
+        "green": 123.1,
+        "purple": 89.97,
+        "black": 147.23
+      }
+    },
+    {
+      "center": {
+        "x": 530,
+        "y": 172
+      },
+      "radius": 68,
+      "candidate_confidence": 0.68,
+      "predicted_color": "pink",
+      "color_confidence": 0.657,
+      "distance_scores": {
+        "orange": 77.23,
+        "pink": 48.04,
+        "green": 109.67,
+        "purple": 174.69,
+        "black": 127.23
+      }
+    },
+    {
+      "center": {
+        "x": 1028,
+        "y": 172
+      },
+      "radius": 37,
+      "candidate_confidence": 0.37,
+      "predicted_color": "purple",
+      "color_confidence": 0.363,
+      "distance_scores": {
+        "orange": 221.24,
+        "pink": 224.49,
+        "green": 126.22,
+        "purple": 89.2,
+        "black": 144.23
+      }
+    },
+    {
+      "center": {
+        "x": 638,
+        "y": 175
+      },
+      "radius": 69,
+      "candidate_confidence": 0.69,
+      "predicted_color": "pink",
+      "color_confidence": 0.696,
+      "distance_scores": {
+        "orange": 55.76,
+        "pink": 42.55,
+        "green": 125.53,
+        "purple": 144.88,
+        "black": 98.2
+      }
+    },
+    {
+      "center": {
+        "x": 1177,
+        "y": 191
+      },
+      "radius": 21,
+      "candidate_confidence": 0.35,
+      "predicted_color": "purple",
+      "color_confidence": 0.397,
+      "distance_scores": {
+        "orange": 217.5,
+        "pink": 219.84,
+        "green": 125.61,
+        "purple": 84.46,
+        "black": 145.43
+      }
+    },
+    {
+      "center": {
+        "x": 995,
+        "y": 194
+      },
+      "radius": 34,
+      "candidate_confidence": 0.35,
+      "predicted_color": "purple",
+      "color_confidence": 0.432,
+      "distance_scores": {
+        "orange": 212.91,
+        "pink": 214.79,
+        "green": 127.99,
+        "purple": 79.52,
+        "black": 143.2
+      }
+    },
+    {
+      "center": {
+        "x": 707,
+        "y": 200
+      },
+      "radius": 88,
+      "candidate_confidence": 0.88,
+      "predicted_color": "purple",
+      "color_confidence": 0.452,
+      "distance_scores": {
+        "orange": 209.87,
+        "pink": 211.71,
+        "green": 128.98,
+        "purple": 76.71,
+        "black": 142.34
+      }
+    },
+    {
+      "center": {
+        "x": 934,
+        "y": 203
+      },
+      "radius": 88,
+      "candidate_confidence": 0.88,
+      "predicted_color": "purple",
+      "color_confidence": 0.438,
+      "distance_scores": {
+        "orange": 212.29,
+        "pink": 213.85,
+        "green": 127.22,
+        "purple": 78.66,
+        "black": 144.1
+      }
+    },
+    {
+      "center": {
+        "x": 841,
+        "y": 204
+      },
+      "radius": 61,
+      "candidate_confidence": 0.61,
+      "predicted_color": "purple",
+      "color_confidence": 0.445,
+      "distance_scores": {
+        "orange": 211.02,
+        "pink": 213.09,
+        "green": 130.21,
+        "purple": 77.71,
+        "black": 141.26
+      }
+    },
+    {
+      "center": {
+        "x": 784,
+        "y": 213
+      },
+      "radius": 52,
+      "candidate_confidence": 0.52,
+      "predicted_color": "purple",
+      "color_confidence": 0.434,
+      "distance_scores": {
+        "orange": 211.9,
+        "pink": 214.5,
+        "green": 131.35,
+        "purple": 79.3,
+        "black": 139.61
+      }
+    },
+    {
+      "center": {
+        "x": 597,
+        "y": 217
+      },
+      "radius": 51,
+      "candidate_confidence": 0.51,
+      "predicted_color": "purple",
+      "color_confidence": 0.861,
+      "distance_scores": {
+        "orange": 156.93,
+        "pink": 141.3,
+        "green": 144.13,
+        "purple": 19.43,
+        "black": 154.64
+      }
+    },
+    {
+      "center": {
+        "x": 654,
+        "y": 227
+      },
+      "radius": 20,
+      "candidate_confidence": 0.35,
+      "predicted_color": "purple",
+      "color_confidence": 0.854,
+      "distance_scores": {
+        "orange": 157.24,
+        "pink": 137.58,
+        "green": 149.62,
+        "purple": 20.38,
+        "black": 161.14
+      }
+    },
+    {
+      "center": {
+        "x": 887,
+        "y": 236
+      },
+      "radius": 56,
+      "candidate_confidence": 0.56,
+      "predicted_color": "purple",
+      "color_confidence": 0.45,
+      "distance_scores": {
+        "orange": 210.65,
+        "pink": 212.21,
+        "green": 129.18,
+        "purple": 77.02,
+        "black": 142.14
+      }
+    },
+    {
+      "center": {
+        "x": 203,
+        "y": 240
+      },
+      "radius": 75,
+      "candidate_confidence": 0.75,
+      "predicted_color": "pink",
+      "color_confidence": 0.904,
+      "distance_scores": {
+        "orange": 38.08,
+        "pink": 13.39,
+        "green": 150.92,
+        "purple": 142.86,
+        "black": 100.96
+      }
+    },
+    {
+      "center": {
+        "x": 571,
+        "y": 263
+      },
+      "radius": 32,
+      "candidate_confidence": 0.35,
+      "predicted_color": "purple",
+      "color_confidence": 0.743,
+      "distance_scores": {
+        "orange": 174.22,
+        "pink": 175.44,
+        "green": 162.08,
+        "purple": 36.05,
+        "black": 118.79
+      }
+    },
+    {
+      "center": {
+        "x": 1107,
+        "y": 263
+      },
+      "radius": 94,
+      "candidate_confidence": 0.94,
+      "predicted_color": "purple",
+      "color_confidence": 0.46,
+      "distance_scores": {
+        "orange": 209.03,
+        "pink": 210.94,
+        "green": 131.74,
+        "purple": 75.6,
+        "black": 139.79
+      }
+    },
+    {
+      "center": {
+        "x": 612,
+        "y": 266
+      },
+      "radius": 64,
+      "candidate_confidence": 0.64,
+      "predicted_color": "pink",
+      "color_confidence": 0.634,
+      "distance_scores": {
+        "orange": 62.37,
+        "pink": 51.18,
+        "green": 119.04,
+        "purple": 148.13,
+        "black": 106.3
+      }
+    },
+    {
+      "center": {
+        "x": 139,
+        "y": 272
+      },
+      "radius": 25,
+      "candidate_confidence": 0.35,
+      "predicted_color": "pink",
+      "color_confidence": 0.907,
+      "distance_scores": {
+        "orange": 38.94,
+        "pink": 12.96,
+        "green": 151.25,
+        "purple": 147.4,
+        "black": 106.32
+      }
+    },
+    {
+      "center": {
+        "x": 63,
+        "y": 278
+      },
+      "radius": 84,
+      "candidate_confidence": 0.84,
+      "predicted_color": "pink",
+      "color_confidence": 0.895,
+      "distance_scores": {
+        "orange": 40.61,
+        "pink": 14.66,
+        "green": 146.41,
+        "purple": 145.82,
+        "black": 104.04
+      }
+    },
+    {
+      "center": {
+        "x": 185,
+        "y": 296
+      },
+      "radius": 37,
+      "candidate_confidence": 0.37,
+      "predicted_color": "pink",
+      "color_confidence": 0.888,
+      "distance_scores": {
+        "orange": 36.17,
+        "pink": 15.65,
+        "green": 152.52,
+        "purple": 145.02,
+        "black": 102.91
+      }
+    },
+    {
+      "center": {
+        "x": 111,
+        "y": 300
+      },
+      "radius": 37,
+      "candidate_confidence": 0.37,
+      "predicted_color": "pink",
+      "color_confidence": 0.923,
+      "distance_scores": {
+        "orange": 42.26,
+        "pink": 10.72,
+        "green": 152.81,
+        "purple": 149.24,
+        "black": 108.61
+      }
+    },
+    {
+      "center": {
+        "x": 149,
+        "y": 306
+      },
+      "radius": 60,
+      "candidate_confidence": 0.6,
+      "predicted_color": "pink",
+      "color_confidence": 0.901,
+      "distance_scores": {
+        "orange": 38.25,
+        "pink": 13.86,
+        "green": 151.58,
+        "purple": 147.97,
+        "black": 106.66
+      }
+    },
+    {
+      "center": {
+        "x": 214,
+        "y": 318
+      },
+      "radius": 24,
+      "candidate_confidence": 0.35,
+      "predicted_color": "pink",
+      "color_confidence": 0.906,
+      "distance_scores": {
+        "orange": 46.81,
+        "pink": 13.2,
+        "green": 153.0,
+        "purple": 154.46,
+        "black": 114.12
+      }
+    },
+    {
+      "center": {
+        "x": 62,
+        "y": 323
+      },
+      "radius": 35,
+      "candidate_confidence": 0.35,
+      "predicted_color": "pink",
+      "color_confidence": 0.911,
+      "distance_scores": {
+        "orange": 39.22,
+        "pink": 12.43,
+        "green": 150.18,
+        "purple": 146.68,
+        "black": 105.32
+      }
+    },
+    {
+      "center": {
+        "x": 26,
+        "y": 328
+      },
+      "radius": 26,
+      "candidate_confidence": 0.35,
+      "predicted_color": "pink",
+      "color_confidence": 0.902,
+      "distance_scores": {
+        "orange": 37.77,
+        "pink": 13.7,
+        "green": 149.53,
+        "purple": 145.13,
+        "black": 103.6
+      }
+    },
+    {
+      "center": {
+        "x": 177,
+        "y": 329
+      },
+      "radius": 23,
+      "candidate_confidence": 0.35,
+      "predicted_color": "pink",
+      "color_confidence": 0.911,
+      "distance_scores": {
+        "orange": 47.26,
+        "pink": 12.51,
+        "green": 153.18,
+        "purple": 153.91,
+        "black": 113.82
+      }
+    },
+    {
+      "center": {
+        "x": 131,
+        "y": 335
+      },
+      "radius": 31,
+      "candidate_confidence": 0.35,
+      "predicted_color": "pink",
+      "color_confidence": 0.909,
+      "distance_scores": {
+        "orange": 39.44,
+        "pink": 12.68,
+        "green": 151.27,
+        "purple": 148.15,
+        "black": 106.83
+      }
+    },
+    {
+      "center": {
+        "x": 94,
+        "y": 336
+      },
+      "radius": 61,
+      "candidate_confidence": 0.61,
+      "predicted_color": "pink",
+      "color_confidence": 0.902,
+      "distance_scores": {
+        "orange": 38.18,
+        "pink": 13.66,
+        "green": 150.9,
+        "purple": 147.33,
+        "black": 105.83
+      }
+    },
+    {
+      "center": {
+        "x": 242,
+        "y": 342
+      },
+      "radius": 68,
+      "candidate_confidence": 0.68,
+      "predicted_color": "pink",
+      "color_confidence": 0.896,
+      "distance_scores": {
+        "orange": 49.75,
+        "pink": 14.6,
+        "green": 151.64,
+        "purple": 156.36,
+        "black": 116.04
+      }
+    },
+    {
+      "center": {
+        "x": 47,
+        "y": 357
+      },
+      "radius": 48,
+      "candidate_confidence": 0.48,
+      "predicted_color": "pink",
+      "color_confidence": 0.844,
+      "distance_scores": {
+        "orange": 29.92,
+        "pink": 21.85,
+        "green": 149.72,
+        "purple": 141.8,
+        "black": 97.55
+      }
+    },
+    {
+      "center": {
+        "x": 165,
+        "y": 363
+      },
+      "radius": 84,
+      "candidate_confidence": 0.84,
+      "predicted_color": "pink",
+      "color_confidence": 0.909,
+      "distance_scores": {
+        "orange": 39.44,
+        "pink": 12.68,
+        "green": 151.27,
+        "purple": 148.15,
+        "black": 106.83
+      }
+    },
+    {
+      "center": {
+        "x": 85,
+        "y": 370
+      },
+      "radius": 37,
+      "candidate_confidence": 0.37,
+      "predicted_color": "pink",
+      "color_confidence": 0.868,
+      "distance_scores": {
+        "orange": 33.0,
+        "pink": 18.48,
+        "green": 149.75,
+        "purple": 143.31,
+        "black": 99.84
+      }
+    },
+    {
+      "center": {
+        "x": 128,
+        "y": 372
+      },
+      "radius": 41,
+      "candidate_confidence": 0.41,
+      "predicted_color": "pink",
+      "color_confidence": 0.902,
+      "distance_scores": {
+        "orange": 42.12,
+        "pink": 13.77,
+        "green": 149.57,
+        "purple": 150.25,
+        "black": 108.98
+      }
+    },
+    {
+      "center": {
+        "x": 13,
+        "y": 381
+      },
+      "radius": 36,
+      "candidate_confidence": 0.36,
+      "predicted_color": "orange",
+      "color_confidence": 0.826,
+      "distance_scores": {
+        "orange": 24.31,
+        "pink": 31.96,
+        "green": 153.08,
+        "purple": 139.36,
+        "black": 91.6
+      }
+    },
+    {
+      "center": {
+        "x": 59,
+        "y": 394
+      },
+      "radius": 30,
+      "candidate_confidence": 0.35,
+      "predicted_color": "orange",
+      "color_confidence": 0.816,
+      "distance_scores": {
+        "orange": 25.71,
+        "pink": 26.62,
+        "green": 148.63,
+        "purple": 140.85,
+        "black": 94.17
+      }
+    },
+    {
+      "center": {
+        "x": 510,
+        "y": 829
+      },
+      "radius": 47,
+      "candidate_confidence": 0.47,
+      "predicted_color": "orange",
+      "color_confidence": 0.939,
+      "distance_scores": {
+        "orange": 8.58,
+        "pink": 56.52,
+        "green": 166.13,
+        "purple": 165.42,
+        "black": 106.55
+      }
+    },
+    {
+      "center": {
+        "x": 711,
+        "y": 829
+      },
+      "radius": 37,
+      "candidate_confidence": 0.37,
+      "predicted_color": "purple",
+      "color_confidence": 0.476,
+      "distance_scores": {
+        "orange": 202.06,
+        "pink": 207.41,
+        "green": 155.42,
+        "purple": 73.31,
+        "black": 113.24
+      }
+    },
+    {
+      "center": {
+        "x": 374,
+        "y": 834
+      },
+      "radius": 21,
+      "candidate_confidence": 0.35,
+      "predicted_color": "orange",
+      "color_confidence": 0.937,
+      "distance_scores": {
+        "orange": 8.82,
+        "pink": 52.18,
+        "green": 158.47,
+        "purple": 163.44,
+        "black": 106.48
+      }
+    },
+    {
+      "center": {
+        "x": 763,
+        "y": 838
+      },
+      "radius": 31,
+      "candidate_confidence": 0.35,
+      "predicted_color": "purple",
+      "color_confidence": 0.915,
+      "distance_scores": {
+        "orange": 153.72,
+        "pink": 136.44,
+        "green": 163.0,
+        "purple": 11.93,
+        "black": 147.77
+      }
+    },
+    {
+      "center": {
+        "x": 423,
+        "y": 844
+      },
+      "radius": 52,
+      "candidate_confidence": 0.52,
+      "predicted_color": "orange",
+      "color_confidence": 0.925,
+      "distance_scores": {
+        "orange": 10.51,
+        "pink": 57.03,
+        "green": 167.49,
+        "purple": 167.22,
+        "black": 108.52
+      }
+    },
+    {
+      "center": {
+        "x": 895,
+        "y": 847
+      },
+      "radius": 45,
+      "candidate_confidence": 0.45,
+      "predicted_color": "purple",
+      "color_confidence": 0.912,
+      "distance_scores": {
+        "orange": 151.44,
+        "pink": 140.37,
+        "green": 155.0,
+        "purple": 12.27,
+        "black": 151.92
+      }
+    },
+    {
+      "center": {
+        "x": 551,
+        "y": 852
+      },
+      "radius": 50,
+      "candidate_confidence": 0.5,
+      "predicted_color": "orange",
+      "color_confidence": 0.935,
+      "distance_scores": {
+        "orange": 9.04,
+        "pink": 59.28,
+        "green": 166.92,
+        "purple": 165.79,
+        "black": 104.83
+      }
+    },
+    {
+      "center": {
+        "x": 604,
+        "y": 865
+      },
+      "radius": 25,
+      "candidate_confidence": 0.35,
+      "predicted_color": "orange",
+      "color_confidence": 0.923,
+      "distance_scores": {
+        "orange": 10.75,
+        "pink": 60.71,
+        "green": 168.03,
+        "purple": 167.85,
+        "black": 106.08
+      }
+    },
+    {
+      "center": {
+        "x": 509,
+        "y": 867
+      },
+      "radius": 72,
+      "candidate_confidence": 0.72,
+      "predicted_color": "orange",
+      "color_confidence": 0.879,
+      "distance_scores": {
+        "orange": 16.9,
+        "pink": 45.8,
+        "green": 146.08,
+        "purple": 149.59,
+        "black": 93.95
+      }
+    },
+    {
+      "center": {
+        "x": 746,
+        "y": 872
+      },
+      "radius": 45,
+      "candidate_confidence": 0.45,
+      "predicted_color": "purple",
+      "color_confidence": 0.935,
+      "distance_scores": {
+        "orange": 153.85,
+        "pink": 138.81,
+        "green": 163.02,
+        "purple": 9.1,
+        "black": 144.96
+      }
+    },
+    {
+      "center": {
+        "x": 464,
+        "y": 876
+      },
+      "radius": 39,
+      "candidate_confidence": 0.39,
+      "predicted_color": "orange",
+      "color_confidence": 0.606,
+      "distance_scores": {
+        "orange": 55.15,
+        "pink": 56.52,
+        "green": 113.66,
+        "purple": 149.72,
+        "black": 93.83
+      }
+    },
+    {
+      "center": {
+        "x": 786,
+        "y": 876
+      },
+      "radius": 50,
+      "candidate_confidence": 0.5,
+      "predicted_color": "purple",
+      "color_confidence": 0.928,
+      "distance_scores": {
+        "orange": 148.07,
+        "pink": 138.64,
+        "green": 157.61,
+        "purple": 10.13,
+        "black": 144.82
+      }
+    },
+    {
+      "center": {
+        "x": 923,
+        "y": 877
+      },
+      "radius": 32,
+      "candidate_confidence": 0.35,
+      "predicted_color": "orange",
+      "color_confidence": 0.671,
+      "distance_scores": {
+        "orange": 46.03,
+        "pink": 55.68,
+        "green": 124.78,
+        "purple": 150.1,
+        "black": 95.9
+      }
+    },
+    {
+      "center": {
+        "x": 824,
+        "y": 879
+      },
+      "radius": 34,
+      "candidate_confidence": 0.35,
+      "predicted_color": "orange",
+      "color_confidence": 0.869,
+      "distance_scores": {
+        "orange": 18.28,
+        "pink": 64.07,
+        "green": 179.67,
+        "purple": 164.94,
+        "black": 101.98
+      }
+    },
+    {
+      "center": {
+        "x": 347,
+        "y": 892
+      },
+      "radius": 28,
+      "candidate_confidence": 0.35,
+      "predicted_color": "orange",
+      "color_confidence": 0.898,
+      "distance_scores": {
+        "orange": 14.21,
+        "pink": 59.92,
+        "green": 166.43,
+        "purple": 171.4,
+        "black": 111.92
+      }
+    },
+    {
+      "center": {
+        "x": 572,
+        "y": 893
+      },
+      "radius": 24,
+      "candidate_confidence": 0.35,
+      "predicted_color": "pink",
+      "color_confidence": 0.736,
+      "distance_scores": {
+        "orange": 71.96,
+        "pink": 36.91,
+        "green": 128.64,
+        "purple": 176.78,
+        "black": 133.56
+      }
+    },
+    {
+      "center": {
+        "x": 903,
+        "y": 906
+      },
+      "radius": 94,
+      "candidate_confidence": 0.94,
+      "predicted_color": "orange",
+      "color_confidence": 0.662,
+      "distance_scores": {
+        "orange": 47.27,
+        "pink": 56.2,
+        "green": 125.9,
+        "purple": 147.8,
+        "black": 95.14
+      }
+    },
+    {
+      "center": {
+        "x": 415,
+        "y": 915
+      },
+      "radius": 92,
+      "candidate_confidence": 0.92,
+      "predicted_color": "orange",
+      "color_confidence": 0.976,
+      "distance_scores": {
+        "orange": 3.43,
+        "pink": 54.09,
+        "green": 161.09,
+        "purple": 159.35,
+        "black": 100.26
+      }
+    },
+    {
+      "center": {
+        "x": 977,
+        "y": 917
+      },
+      "radius": 32,
+      "candidate_confidence": 0.35,
+      "predicted_color": "orange",
+      "color_confidence": 0.839,
+      "distance_scores": {
+        "orange": 22.53,
+        "pink": 68.6,
+        "green": 183.39,
+        "purple": 163.95,
+        "black": 99.53
+      }
+    },
+    {
+      "center": {
+        "x": 835,
+        "y": 918
+      },
+      "radius": 70,
+      "candidate_confidence": 0.7,
+      "predicted_color": "orange",
+      "color_confidence": 0.865,
+      "distance_scores": {
+        "orange": 18.91,
+        "pink": 65.41,
+        "green": 179.62,
+        "purple": 164.3,
+        "black": 100.04
+      }
+    },
+    {
+      "center": {
+        "x": 871,
+        "y": 919
+      },
+      "radius": 27,
+      "candidate_confidence": 0.35,
+      "predicted_color": "orange",
+      "color_confidence": 0.901,
+      "distance_scores": {
+        "orange": 13.89,
+        "pink": 52.44,
+        "green": 159.55,
+        "purple": 147.73,
+        "black": 85.07
+      }
+    },
+    {
+      "center": {
+        "x": 686,
+        "y": 924
+      },
+      "radius": 29,
+      "candidate_confidence": 0.35,
+      "predicted_color": "purple",
+      "color_confidence": 0.86,
+      "distance_scores": {
+        "orange": 147.24,
+        "pink": 132.33,
+        "green": 149.73,
+        "purple": 19.65,
+        "black": 139.14
+      }
+    },
+    {
+      "center": {
+        "x": 563,
+        "y": 929
+      },
+      "radius": 94,
+      "candidate_confidence": 0.94,
+      "predicted_color": "orange",
+      "color_confidence": 0.951,
+      "distance_scores": {
+        "orange": 6.79,
+        "pink": 56.79,
+        "green": 165.02,
+        "purple": 162.98,
+        "black": 103.51
+      }
+    },
+    {
+      "center": {
+        "x": 726,
+        "y": 948
+      },
+      "radius": 55,
+      "candidate_confidence": 0.55,
+      "predicted_color": "purple",
+      "color_confidence": 0.92,
+      "distance_scores": {
+        "orange": 149.54,
+        "pink": 134.52,
+        "green": 162.7,
+        "purple": 11.22,
+        "black": 142.59
+      }
+    },
+    {
+      "center": {
+        "x": 1057,
+        "y": 952
+      },
+      "radius": 33,
+      "candidate_confidence": 0.35,
+      "predicted_color": "purple",
+      "color_confidence": 0.923,
+      "distance_scores": {
+        "orange": 158.95,
+        "pink": 141.27,
+        "green": 161.52,
+        "purple": 10.79,
+        "black": 153.83
+      }
+    },
+    {
+      "center": {
+        "x": 773,
+        "y": 953
+      },
+      "radius": 94,
+      "candidate_confidence": 0.94,
+      "predicted_color": "purple",
+      "color_confidence": 0.927,
+      "distance_scores": {
+        "orange": 148.94,
+        "pink": 135.77,
+        "green": 159.36,
+        "purple": 10.25,
+        "black": 143.48
+      }
+    },
+    {
+      "center": {
+        "x": 331,
+        "y": 955
+      },
+      "radius": 27,
+      "candidate_confidence": 0.35,
+      "predicted_color": "orange",
+      "color_confidence": 0.916,
+      "distance_scores": {
+        "orange": 11.77,
+        "pink": 56.8,
+        "green": 163.78,
+        "purple": 168.32,
+        "black": 110.22
+      }
+    },
+    {
+      "center": {
+        "x": 484,
+        "y": 956
+      },
+      "radius": 89,
+      "candidate_confidence": 0.89,
+      "predicted_color": "orange",
+      "color_confidence": 0.866,
+      "distance_scores": {
+        "orange": 18.77,
+        "pink": 41.05,
+        "green": 145.81,
+        "purple": 140.55,
+        "black": 86.08
+      }
+    },
+    {
+      "center": {
+        "x": 870,
+        "y": 967
+      },
+      "radius": 82,
+      "candidate_confidence": 0.82,
+      "predicted_color": "orange",
+      "color_confidence": 0.898,
+      "distance_scores": {
+        "orange": 14.27,
+        "pink": 60.44,
+        "green": 175.3,
+        "purple": 159.73,
+        "black": 97.84
+      }
+    },
+    {
+      "center": {
+        "x": 701,
+        "y": 977
+      },
+      "radius": 40,
+      "candidate_confidence": 0.4,
+      "predicted_color": "purple",
+      "color_confidence": 0.868,
+      "distance_scores": {
+        "orange": 142.88,
+        "pink": 134.5,
+        "green": 170.11,
+        "purple": 18.48,
+        "black": 125.45
+      }
+    },
+    {
+      "center": {
+        "x": 370,
+        "y": 979
+      },
+      "radius": 93,
+      "candidate_confidence": 0.93,
+      "predicted_color": "orange",
+      "color_confidence": 0.948,
+      "distance_scores": {
+        "orange": 7.32,
+        "pink": 56.02,
+        "green": 165.06,
+        "purple": 164.3,
+        "black": 105.32
+      }
+    },
+    {
+      "center": {
+        "x": 455,
+        "y": 983
+      },
+      "radius": 42,
+      "candidate_confidence": 0.42,
+      "predicted_color": "orange",
+      "color_confidence": 0.9,
+      "distance_scores": {
+        "orange": 14.0,
+        "pink": 57.88,
+        "green": 175.14,
+        "purple": 154.99,
+        "black": 96.14
+      }
+    },
+    {
+      "center": {
+        "x": 971,
+        "y": 990
+      },
+      "radius": 94,
+      "candidate_confidence": 0.94,
+      "predicted_color": "purple",
+      "color_confidence": 0.948,
+      "distance_scores": {
+        "orange": 155.01,
+        "pink": 140.92,
+        "green": 158.88,
+        "purple": 7.29,
+        "black": 149.81
+      }
+    },
+    {
+      "center": {
+        "x": 1041,
+        "y": 991
+      },
+      "radius": 31,
+      "candidate_confidence": 0.35,
+      "predicted_color": "purple",
+      "color_confidence": 0.919,
+      "distance_scores": {
+        "orange": 156.49,
+        "pink": 140.04,
+        "green": 162.8,
+        "purple": 11.4,
+        "black": 150.82
+      }
+    },
+    {
+      "center": {
+        "x": 626,
+        "y": 996
+      },
+      "radius": 94,
+      "candidate_confidence": 0.94,
+      "predicted_color": "orange",
+      "color_confidence": 0.739,
+      "distance_scores": {
+        "orange": 36.51,
+        "pink": 42.2,
+        "green": 132.24,
+        "purple": 142.75,
+        "black": 92.73
+      }
+    },
+    {
+      "center": {
+        "x": 542,
+        "y": 998
+      },
+      "radius": 51,
+      "candidate_confidence": 0.51,
+      "predicted_color": "orange",
+      "color_confidence": 0.95,
+      "distance_scores": {
+        "orange": 7.04,
+        "pink": 57.78,
+        "green": 165.04,
+        "purple": 163.18,
+        "black": 102.65
+      }
+    },
+    {
+      "center": {
+        "x": 855,
+        "y": 999
+      },
+      "radius": 28,
+      "candidate_confidence": 0.35,
+      "predicted_color": "orange",
+      "color_confidence": 0.882,
+      "distance_scores": {
+        "orange": 16.46,
+        "pink": 61.78,
+        "green": 178.1,
+        "purple": 163.18,
+        "black": 101.46
+      }
+    },
+    {
+      "center": {
+        "x": 891,
+        "y": 1001
+      },
+      "radius": 47,
+      "candidate_confidence": 0.47,
+      "predicted_color": "orange",
+      "color_confidence": 0.909,
+      "distance_scores": {
+        "orange": 12.77,
+        "pink": 58.74,
+        "green": 173.54,
+        "purple": 157.59,
+        "black": 96.23
+      }
+    },
+    {
+      "center": {
+        "x": 338,
+        "y": 1003
+      },
+      "radius": 20,
+      "candidate_confidence": 0.35,
+      "predicted_color": "orange",
+      "color_confidence": 0.93,
+      "distance_scores": {
+        "orange": 9.79,
+        "pink": 54.43,
+        "green": 161.71,
+        "purple": 165.34,
+        "black": 108.36
+      }
+    },
+    {
+      "center": {
+        "x": 686,
+        "y": 1021
+      },
+      "radius": 49,
+      "candidate_confidence": 0.49,
+      "predicted_color": "purple",
+      "color_confidence": 0.685,
+      "distance_scores": {
+        "orange": 136.05,
+        "pink": 138.38,
+        "green": 181.48,
+        "purple": 44.07,
+        "black": 100.16
+      }
+    },
+    {
+      "center": {
+        "x": 735,
+        "y": 1021
+      },
+      "radius": 89,
+      "candidate_confidence": 0.89,
+      "predicted_color": "purple",
+      "color_confidence": 0.903,
+      "distance_scores": {
+        "orange": 145.69,
+        "pink": 131.94,
+        "green": 162.62,
+        "purple": 13.61,
+        "black": 139.6
+      }
+    },
+    {
+      "center": {
+        "x": 427,
+        "y": 1031
+      },
+      "radius": 94,
+      "candidate_confidence": 0.94,
+      "predicted_color": "orange",
+      "color_confidence": 0.928,
+      "distance_scores": {
+        "orange": 10.03,
+        "pink": 47.62,
+        "green": 156.47,
+        "purple": 154.62,
+        "black": 100.5
+      }
+    },
+    {
+      "center": {
+        "x": 378,
+        "y": 1036
+      },
+      "radius": 50,
+      "candidate_confidence": 0.5,
+      "predicted_color": "orange",
+      "color_confidence": 0.925,
+      "distance_scores": {
+        "orange": 10.55,
+        "pink": 57.01,
+        "green": 166.72,
+        "purple": 167.76,
+        "black": 108.45
+      }
+    },
+    {
+      "center": {
+        "x": 1029,
+        "y": 1036
+      },
+      "radius": 40,
+      "candidate_confidence": 0.4,
+      "predicted_color": "purple",
+      "color_confidence": 0.882,
+      "distance_scores": {
+        "orange": 154.81,
+        "pink": 135.58,
+        "green": 165.45,
+        "purple": 16.49,
+        "black": 152.35
+      }
+    },
+    {
+      "center": {
+        "x": 971,
+        "y": 1039
+      },
+      "radius": 59,
+      "candidate_confidence": 0.59,
+      "predicted_color": "purple",
+      "color_confidence": 0.912,
+      "distance_scores": {
+        "orange": 149.25,
+        "pink": 134.73,
+        "green": 158.49,
+        "purple": 12.33,
+        "black": 149.28
+      }
+    },
+    {
+      "center": {
+        "x": 535,
+        "y": 1067
+      },
+      "radius": 93,
+      "candidate_confidence": 0.93,
+      "predicted_color": "orange",
+      "color_confidence": 0.831,
+      "distance_scores": {
+        "orange": 23.69,
+        "pink": 38.13,
+        "green": 142.57,
+        "purple": 139.53,
+        "black": 88.74
+      }
+    },
+    {
+      "center": {
+        "x": 841,
+        "y": 1070
+      },
+      "radius": 92,
+      "candidate_confidence": 0.92,
+      "predicted_color": "purple",
+      "color_confidence": 0.918,
+      "distance_scores": {
+        "orange": 147.17,
+        "pink": 134.53,
+        "green": 159.99,
+        "purple": 11.48,
+        "black": 140.09
+      }
+    },
+    {
+      "center": {
+        "x": 651,
+        "y": 1078
+      },
+      "radius": 59,
+      "candidate_confidence": 0.59,
+      "predicted_color": "pink",
+      "color_confidence": 0.659,
+      "distance_scores": {
+        "orange": 49.23,
+        "pink": 47.77,
+        "green": 122.27,
+        "purple": 149.98,
+        "black": 102.77
+      }
+    },
+    {
+      "center": {
+        "x": 379,
+        "y": 1080
+      },
+      "radius": 26,
+      "candidate_confidence": 0.35,
+      "predicted_color": "pink",
+      "color_confidence": 0.794,
+      "distance_scores": {
+        "orange": 30.98,
+        "pink": 28.83,
+        "green": 140.06,
+        "purple": 138.17,
+        "black": 91.48
+      }
+    },
+    {
+      "center": {
+        "x": 616,
+        "y": 1080
+      },
+      "radius": 24,
+      "candidate_confidence": 0.35,
+      "predicted_color": "pink",
+      "color_confidence": 0.842,
+      "distance_scores": {
+        "orange": 34.83,
+        "pink": 22.13,
+        "green": 141.6,
+        "purple": 142.14,
+        "black": 97.99
+      }
+    },
+    {
+      "center": {
+        "x": 917,
+        "y": 1100
+      },
+      "radius": 56,
+      "candidate_confidence": 0.56,
+      "predicted_color": "purple",
+      "color_confidence": 0.899,
+      "distance_scores": {
+        "orange": 149.81,
+        "pink": 131.4,
+        "green": 156.58,
+        "purple": 14.11,
+        "black": 144.64
+      }
+    },
+    {
+      "center": {
+        "x": 463,
+        "y": 1110
+      },
+      "radius": 94,
+      "candidate_confidence": 0.94,
+      "predicted_color": "orange",
+      "color_confidence": 0.807,
+      "distance_scores": {
+        "orange": 26.98,
+        "pink": 34.77,
+        "green": 140.05,
+        "purple": 137.93,
+        "black": 88.8
+      }
+    },
+    {
+      "center": {
+        "x": 343,
+        "y": 1113
+      },
+      "radius": 41,
+      "candidate_confidence": 0.41,
+      "predicted_color": "orange",
+      "color_confidence": 0.743,
+      "distance_scores": {
+        "orange": 35.95,
+        "pink": 44.13,
+        "green": 134.87,
+        "purple": 134.24,
+        "black": 77.9
+      }
+    },
+    {
+      "center": {
+        "x": 605,
+        "y": 1115
+      },
+      "radius": 37,
+      "candidate_confidence": 0.37,
+      "predicted_color": "pink",
+      "color_confidence": 0.854,
+      "distance_scores": {
+        "orange": 31.79,
+        "pink": 20.38,
+        "green": 148.49,
+        "purple": 139.59,
+        "black": 95.66
+      }
+    },
+    {
+      "center": {
+        "x": 987,
+        "y": 1120
+      },
+      "radius": 32,
+      "candidate_confidence": 0.35,
+      "predicted_color": "purple",
+      "color_confidence": 0.696,
+      "distance_scores": {
+        "orange": 169.16,
+        "pink": 172.77,
+        "green": 175.63,
+        "purple": 42.51,
+        "black": 101.89
+      }
+    },
+    {
+      "center": {
+        "x": 401,
+        "y": 1122
+      },
+      "radius": 40,
+      "candidate_confidence": 0.4,
+      "predicted_color": "pink",
+      "color_confidence": 0.785,
+      "distance_scores": {
+        "orange": 42.47,
+        "pink": 30.13,
+        "green": 131.66,
+        "purple": 143.83,
+        "black": 97.61
+      }
+    },
+    {
+      "center": {
+        "x": 663,
+        "y": 1128
+      },
+      "radius": 55,
+      "candidate_confidence": 0.55,
+      "predicted_color": "pink",
+      "color_confidence": 0.687,
+      "distance_scores": {
+        "orange": 53.81,
+        "pink": 43.78,
+        "green": 119.45,
+        "purple": 151.36,
+        "black": 104.13
+      }
+    },
+    {
+      "center": {
+        "x": 745,
+        "y": 1128
+      },
+      "radius": 77,
+      "candidate_confidence": 0.77,
+      "predicted_color": "purple",
+      "color_confidence": 0.879,
+      "distance_scores": {
+        "orange": 145.05,
+        "pink": 130.47,
+        "green": 155.05,
+        "purple": 16.9,
+        "black": 140.16
+      }
+    },
+    {
+      "center": {
+        "x": 910,
+        "y": 1133
+      },
+      "radius": 26,
+      "candidate_confidence": 0.35,
+      "predicted_color": "purple",
+      "color_confidence": 0.864,
+      "distance_scores": {
+        "orange": 151.99,
+        "pink": 127.76,
+        "green": 149.58,
+        "purple": 19.02,
+        "black": 152.66
+      }
+    },
+    {
+      "center": {
+        "x": 320,
+        "y": 1141
+      },
+      "radius": 87,
+      "candidate_confidence": 0.87,
+      "predicted_color": "pink",
+      "color_confidence": 0.714,
+      "distance_scores": {
+        "orange": 41.75,
+        "pink": 40.08,
+        "green": 129.13,
+        "purple": 136.25,
+        "black": 82.49
+      }
+    },
+    {
+      "center": {
+        "x": 568,
+        "y": 1146
+      },
+      "radius": 55,
+      "candidate_confidence": 0.55,
+      "predicted_color": "pink",
+      "color_confidence": 0.838,
+      "distance_scores": {
+        "orange": 30.9,
+        "pink": 22.74,
+        "green": 144.13,
+        "purple": 138.69,
+        "black": 93.97
+      }
+    },
+    {
+      "center": {
+        "x": 700,
+        "y": 1146
+      },
+      "radius": 37,
+      "candidate_confidence": 0.37,
+      "predicted_color": "purple",
+      "color_confidence": 0.902,
+      "distance_scores": {
+        "orange": 147.98,
+        "pink": 139.82,
+        "green": 154.21,
+        "purple": 13.75,
+        "black": 134.53
+      }
+    },
+    {
+      "center": {
+        "x": 372,
+        "y": 1148
+      },
+      "radius": 40,
+      "candidate_confidence": 0.4,
+      "predicted_color": "orange",
+      "color_confidence": 0.688,
+      "distance_scores": {
+        "orange": 43.73,
+        "pink": 45.07,
+        "green": 127.36,
+        "purple": 137.81,
+        "black": 81.62
+      }
+    },
+    {
+      "center": {
+        "x": 409,
+        "y": 1160
+      },
+      "radius": 32,
+      "candidate_confidence": 0.35,
+      "predicted_color": "pink",
+      "color_confidence": 0.686,
+      "distance_scores": {
+        "orange": 62.57,
+        "pink": 43.96,
+        "green": 113.9,
+        "purple": 158.9,
+        "black": 111.15
+      }
+    },
+    {
+      "center": {
+        "x": 814,
+        "y": 1161
+      },
+      "radius": 94,
+      "candidate_confidence": 0.94,
+      "predicted_color": "purple",
+      "color_confidence": 0.907,
+      "distance_scores": {
+        "orange": 149.74,
+        "pink": 134.62,
+        "green": 151.54,
+        "purple": 12.99,
+        "black": 142.92
+      }
+    },
+    {
+      "center": {
+        "x": 982,
+        "y": 1164
+      },
+      "radius": 82,
+      "candidate_confidence": 0.82,
+      "predicted_color": "purple",
+      "color_confidence": 0.853,
+      "distance_scores": {
+        "orange": 153.4,
+        "pink": 138.86,
+        "green": 141.01,
+        "purple": 20.54,
+        "black": 146.66
+      }
+    },
+    {
+      "center": {
+        "x": 731,
+        "y": 1166
+      },
+      "radius": 41,
+      "candidate_confidence": 0.41,
+      "predicted_color": "green",
+      "color_confidence": 0.811,
+      "distance_scores": {
+        "orange": 151.82,
+        "pink": 148.02,
+        "green": 26.41,
+        "purple": 136.56,
+        "black": 182.25
+      }
+    },
+    {
+      "center": {
+        "x": 451,
+        "y": 1167
+      },
+      "radius": 51,
+      "candidate_confidence": 0.51,
+      "predicted_color": "pink",
+      "color_confidence": 0.787,
+      "distance_scores": {
+        "orange": 34.97,
+        "pink": 29.84,
+        "green": 137.15,
+        "purple": 138.63,
+        "black": 91.87
+      }
+    },
+    {
+      "center": {
+        "x": 926,
+        "y": 1167
+      },
+      "radius": 39,
+      "candidate_confidence": 0.39,
+      "predicted_color": "green",
+      "color_confidence": 0.659,
+      "distance_scores": {
+        "orange": 130.58,
+        "pink": 110.34,
+        "green": 47.8,
+        "purple": 168.57,
+        "black": 172.77
+      }
+    },
+    {
+      "center": {
+        "x": 525,
+        "y": 1168
+      },
+      "radius": 58,
+      "candidate_confidence": 0.58,
+      "predicted_color": "pink",
+      "color_confidence": 0.804,
+      "distance_scores": {
+        "orange": 32.7,
+        "pink": 27.41,
+        "green": 139.41,
+        "purple": 137.9,
+        "black": 91.81
+      }
+    },
+    {
+      "center": {
+        "x": 581,
+        "y": 1180
+      },
+      "radius": 21,
+      "candidate_confidence": 0.35,
+      "predicted_color": "pink",
+      "color_confidence": 0.813,
+      "distance_scores": {
+        "orange": 47.05,
+        "pink": 26.15,
+        "green": 133.2,
+        "purple": 149.44,
+        "black": 105.08
+      }
+    },
+    {
+      "center": {
+        "x": 857,
+        "y": 1185
+      },
+      "radius": 59,
+      "candidate_confidence": 0.59,
+      "predicted_color": "purple",
+      "color_confidence": 0.864,
+      "distance_scores": {
+        "orange": 152.39,
+        "pink": 148.12,
+        "green": 162.52,
+        "purple": 19.1,
+        "black": 124.16
+      }
+    },
+    {
+      "center": {
+        "x": 484,
+        "y": 1189
+      },
+      "radius": 40,
+      "candidate_confidence": 0.4,
+      "predicted_color": "orange",
+      "color_confidence": 0.806,
+      "distance_scores": {
+        "orange": 27.22,
+        "pink": 29.2,
+        "green": 142.81,
+        "purple": 136.1,
+        "black": 88.96
+      }
+    },
+    {
+      "center": {
+        "x": 760,
+        "y": 1197
+      },
+      "radius": 31,
+      "candidate_confidence": 0.35,
+      "predicted_color": "green",
+      "color_confidence": 0.847,
+      "distance_scores": {
+        "orange": 157.05,
+        "pink": 156.36,
+        "green": 21.38,
+        "purple": 151.78,
+        "black": 171.28
+      }
+    },
+    {
+      "center": {
+        "x": 444,
+        "y": 1200
+      },
+      "radius": 18,
+      "candidate_confidence": 0.35,
+      "predicted_color": "orange",
+      "color_confidence": 0.819,
+      "distance_scores": {
+        "orange": 25.4,
+        "pink": 35.03,
+        "green": 144.73,
+        "purple": 134.22,
+        "black": 83.35
+      }
+    },
+    {
+      "center": {
+        "x": 358,
+        "y": 1201
+      },
+      "radius": 72,
+      "candidate_confidence": 0.72,
+      "predicted_color": "pink",
+      "color_confidence": 0.767,
+      "distance_scores": {
+        "orange": 44.92,
+        "pink": 32.56,
+        "green": 128.51,
+        "purple": 141.59,
+        "black": 93.58
+      }
+    },
+    {
+      "center": {
+        "x": 394,
+        "y": 1201
+      },
+      "radius": 28,
+      "candidate_confidence": 0.35,
+      "predicted_color": "orange",
+      "color_confidence": 0.742,
+      "distance_scores": {
+        "orange": 36.08,
+        "pink": 40.16,
+        "green": 133.71,
+        "purple": 134.9,
+        "black": 80.86
+      }
+    },
+    {
+      "center": {
+        "x": 887,
+        "y": 1203
+      },
+      "radius": 25,
+      "candidate_confidence": 0.35,
+      "predicted_color": "purple",
+      "color_confidence": 0.885,
+      "distance_scores": {
+        "orange": 155.62,
+        "pink": 139.71,
+        "green": 144.05,
+        "purple": 16.06,
+        "black": 151.92
+      }
+    },
+    {
+      "center": {
+        "x": 722,
+        "y": 1205
+      },
+      "radius": 27,
+      "candidate_confidence": 0.35,
+      "predicted_color": "green",
+      "color_confidence": 0.669,
+      "distance_scores": {
+        "orange": 175.27,
+        "pink": 190.52,
+        "green": 46.37,
+        "purple": 170.38,
+        "black": 153.01
+      }
+    },
+    {
+      "center": {
+        "x": 522,
+        "y": 1207
+      },
+      "radius": 21,
+      "candidate_confidence": 0.35,
+      "predicted_color": "pink",
+      "color_confidence": 0.722,
+      "distance_scores": {
+        "orange": 64.79,
+        "pink": 38.91,
+        "green": 117.53,
+        "purple": 163.0,
+        "black": 117.17
+      }
+    },
+    {
+      "center": {
+        "x": 932,
+        "y": 1207
+      },
+      "radius": 34,
+      "candidate_confidence": 0.35,
+      "predicted_color": "green",
+      "color_confidence": 0.789,
+      "distance_scores": {
+        "orange": 146.77,
+        "pink": 126.94,
+        "green": 29.57,
+        "purple": 169.65,
+        "black": 184.5
+      }
+    },
+    {
+      "center": {
+        "x": 830,
+        "y": 1213
+      },
+      "radius": 46,
+      "candidate_confidence": 0.46,
+      "predicted_color": "pink",
+      "color_confidence": 0.622,
+      "distance_scores": {
+        "orange": 83.88,
+        "pink": 52.93,
+        "green": 103.54,
+        "purple": 178.54,
+        "black": 131.22
+      }
+    },
+    {
+      "center": {
+        "x": 631,
+        "y": 1220
+      },
+      "radius": 94,
+      "candidate_confidence": 0.94,
+      "predicted_color": "pink",
+      "color_confidence": 0.757,
+      "distance_scores": {
+        "orange": 44.44,
+        "pink": 34.07,
+        "green": 126.94,
+        "purple": 142.27,
+        "black": 93.77
+      }
+    },
+    {
+      "center": {
+        "x": 781,
+        "y": 1228
+      },
+      "radius": 21,
+      "candidate_confidence": 0.35,
+      "predicted_color": "pink",
+      "color_confidence": 0.59,
+      "distance_scores": {
+        "orange": 84.63,
+        "pink": 57.34,
+        "green": 98.42,
+        "purple": 180.28,
+        "black": 132.31
+      }
+    },
+    {
+      "center": {
+        "x": 953,
+        "y": 1235
+      },
+      "radius": 93,
+      "candidate_confidence": 0.93,
+      "predicted_color": "green",
+      "color_confidence": 0.868,
+      "distance_scores": {
+        "orange": 151.12,
+        "pink": 138.42,
+        "green": 18.52,
+        "purple": 155.96,
+        "black": 181.92
+      }
+    },
+    {
+      "center": {
+        "x": 723,
+        "y": 1239
+      },
+      "radius": 91,
+      "candidate_confidence": 0.91,
+      "predicted_color": "green",
+      "color_confidence": 0.766,
+      "distance_scores": {
+        "orange": 137.7,
+        "pink": 127.92,
+        "green": 32.82,
+        "purple": 161.0,
+        "black": 169.93
+      }
+    },
+    {
+      "center": {
+        "x": 415,
+        "y": 1241
+      },
+      "radius": 80,
+      "candidate_confidence": 0.8,
+      "predicted_color": "orange",
+      "color_confidence": 0.771,
+      "distance_scores": {
+        "orange": 32.07,
+        "pink": 39.95,
+        "green": 138.28,
+        "purple": 132.95,
+        "black": 78.68
+      }
+    },
+    {
+      "center": {
+        "x": 484,
+        "y": 1241
+      },
+      "radius": 93,
+      "candidate_confidence": 0.93,
+      "predicted_color": "orange",
+      "color_confidence": 0.783,
+      "distance_scores": {
+        "orange": 30.45,
+        "pink": 36.25,
+        "green": 139.03,
+        "purple": 134.1,
+        "black": 83.24
+      }
+    },
+    {
+      "center": {
+        "x": 854,
+        "y": 1241
+      },
+      "radius": 27,
+      "candidate_confidence": 0.35,
+      "predicted_color": "pink",
+      "color_confidence": 0.536,
+      "distance_scores": {
+        "orange": 98.97,
+        "pink": 65.02,
+        "green": 91.29,
+        "purple": 193.99,
+        "black": 147.46
+      }
+    },
+    {
+      "center": {
+        "x": 808,
+        "y": 1259
+      },
+      "radius": 31,
+      "candidate_confidence": 0.35,
+      "predicted_color": "green",
+      "color_confidence": 0.486,
+      "distance_scores": {
+        "orange": 112.79,
+        "pink": 84.05,
+        "green": 71.9,
+        "purple": 199.59,
+        "black": 158.16
+      }
+    },
+    {
+      "center": {
+        "x": 846,
+        "y": 1281
+      },
+      "radius": 86,
+      "candidate_confidence": 0.86,
+      "predicted_color": "green",
+      "color_confidence": 0.684,
+      "distance_scores": {
+        "orange": 133.32,
+        "pink": 111.24,
+        "green": 44.29,
+        "purple": 175.12,
+        "black": 175.31
+      }
+    },
+    {
+      "center": {
+        "x": 689,
+        "y": 1327
+      },
+      "radius": 31,
+      "candidate_confidence": 0.35,
+      "predicted_color": "black",
+      "color_confidence": 0.75,
+      "distance_scores": {
+        "orange": 92.79,
+        "pink": 104.35,
+        "green": 173.58,
+        "purple": 171.75,
+        "black": 35.05
+      }
+    },
+    {
+      "center": {
+        "x": 283,
+        "y": 1361
+      },
+      "radius": 65,
+      "candidate_confidence": 0.65,
+      "predicted_color": "black",
+      "color_confidence": 0.66,
+      "distance_scores": {
+        "orange": 61.21,
+        "pink": 57.26,
+        "green": 152.14,
+        "purple": 123.55,
+        "black": 47.62
+      }
+    },
+    {
+      "center": {
+        "x": 673,
+        "y": 1375
+      },
+      "radius": 30,
+      "candidate_confidence": 0.35,
+      "predicted_color": "purple",
+      "color_confidence": 0.693,
+      "distance_scores": {
+        "orange": 141.72,
+        "pink": 137.45,
+        "green": 169.47,
+        "purple": 43.02,
+        "black": 106.12
+      }
+    },
+    {
+      "center": {
+        "x": 605,
+        "y": 1385
+      },
+      "radius": 20,
+      "candidate_confidence": 0.35,
+      "predicted_color": "black",
+      "color_confidence": 0.672,
+      "distance_scores": {
+        "orange": 62.35,
+        "pink": 59.02,
+        "green": 152.75,
+        "purple": 124.75,
+        "black": 45.89
+      }
+    },
+    {
+      "center": {
+        "x": 390,
+        "y": 1391
+      },
+      "radius": 36,
+      "candidate_confidence": 0.36,
+      "predicted_color": "black",
+      "color_confidence": 0.668,
+      "distance_scores": {
+        "orange": 62.05,
+        "pink": 58.43,
+        "green": 152.37,
+        "purple": 124.41,
+        "black": 46.49
+      }
+    },
+    {
+      "center": {
+        "x": 650,
+        "y": 1419
+      },
+      "radius": 42,
+      "candidate_confidence": 0.42,
+      "predicted_color": "black",
+      "color_confidence": 0.604,
+      "distance_scores": {
+        "orange": 57.67,
+        "pink": 56.74,
+        "green": 144.16,
+        "purple": 130.71,
+        "black": 55.41
+      }
+    },
+    {
+      "center": {
+        "x": 1005,
+        "y": 1437
+      },
+      "radius": 39,
+      "candidate_confidence": 0.39,
+      "predicted_color": "purple",
+      "color_confidence": 0.628,
+      "distance_scores": {
+        "orange": 154.08,
+        "pink": 155.73,
+        "green": 177.76,
+        "purple": 52.02,
+        "black": 93.05
+      }
+    }
+  ]
+}

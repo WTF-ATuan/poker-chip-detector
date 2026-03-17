@@ -1,0 +1,107 @@
+{
+  "image": "/Users/benson/Downloads/chips/chips pic1.jpg",
+  "analysis_scale": 1.0,
+  "candidate_count": 8,
+  "visible_top_count_by_color": {
+    "orange": 1,
+    "pink": 3
+  },
+  "observations": [
+    {
+      "center": {
+        "x": 421,
+        "y": 116
+      },
+      "radius": 65,
+      "candidate_confidence": 0.65,
+      "profile_metrics": {
+        "ring_sat": 142.18,
+        "center_val": 208.49,
+        "sat_delta": 49.05,
+        "val_delta": 53.48,
+        "score": 13.91
+      },
+      "predicted_color": "orange",
+      "color_confidence": 0.629,
+      "distance_scores": {
+        "orange": 51.96,
+        "pink": 67.7,
+        "green": 110.17,
+        "purple": 168.66,
+        "black": 107.73
+      }
+    },
+    {
+      "center": {
+        "x": 322,
+        "y": 151
+      },
+      "radius": 42,
+      "candidate_confidence": 0.42,
+      "profile_metrics": {
+        "ring_sat": 100.94,
+        "center_val": 142.15,
+        "sat_delta": 34.67,
+        "val_delta": 21.13,
+        "score": 9.25
+      },
+      "predicted_color": "pink",
+      "color_confidence": 0.617,
+      "distance_scores": {
+        "orange": 67.61,
+        "pink": 53.57,
+        "green": 107.94,
+        "purple": 157.66,
+        "black": 106.28
+      }
+    },
+    {
+      "center": {
+        "x": 308,
+        "y": 246
+      },
+      "radius": 65,
+      "candidate_confidence": 0.65,
+      "profile_metrics": {
+        "ring_sat": 86.24,
+        "center_val": 213.04,
+        "sat_delta": 21.46,
+        "val_delta": 41.88,
+        "score": 10.04
+      },
+      "predicted_color": "pink",
+      "color_confidence": 0.666,
+      "distance_scores": {
+        "orange": 65.65,
+        "pink": 46.69,
+        "green": 111.43,
+        "purple": 159.72,
+        "black": 110.26
+      }
+    },
+    {
+      "center": {
+        "x": 416,
+        "y": 248
+      },
+      "radius": 58,
+      "candidate_confidence": 0.58,
+      "profile_metrics": {
+        "ring_sat": 94.27,
+        "center_val": 162.04,
+        "sat_delta": 44.45,
+        "val_delta": 31.4,
+        "score": 10.18
+      },
+      "predicted_color": "pink",
+      "color_confidence": 0.583,
+      "distance_scores": {
+        "orange": 68.81,
+        "pink": 58.4,
+        "green": 107.82,
+        "purple": 154.7,
+        "black": 101.04
+      }
+    }
+  ]
+}

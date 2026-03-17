@@ -1,0 +1,216 @@
+{
+  "image": "/Users/benson/Downloads/chips/chips pic 9.jpeg",
+  "analysis_scale": 1.0,
+  "candidate_count": 12,
+  "visible_top_count_by_color": {
+    "pink": 2,
+    "purple": 3,
+    "orange": 7
+  },
+  "observations": [
+    {
+      "center": {
+        "x": 67,
+        "y": 6
+      },
+      "radius": 41,
+      "candidate_confidence": 0.41,
+      "predicted_color": "pink",
+      "color_confidence": 0.807,
+      "distance_scores": {
+        "orange": 38.39,
+        "pink": 27.04,
+        "green": 135.71,
+        "purple": 145.73,
+        "black": 100.48
+      }
+    },
+    {
+      "center": {
+        "x": 139,
+        "y": 47
+      },
+      "radius": 29,
+      "candidate_confidence": 0.35,
+      "predicted_color": "pink",
+      "color_confidence": 0.791,
+      "distance_scores": {
+        "orange": 48.61,
+        "pink": 29.32,
+        "green": 129.77,
+        "purple": 149.65,
+        "black": 106.26
+      }
+    },
+    {
+      "center": {
+        "x": 85,
+        "y": 63
+      },
+      "radius": 38,
+      "candidate_confidence": 0.38,
+      "predicted_color": "purple",
+      "color_confidence": 0.452,
+      "distance_scores": {
+        "orange": 214.35,
+        "pink": 210.74,
+        "green": 101.88,
+        "purple": 76.71,
+        "black": 172.84
+      }
+    },
+    {
+      "center": {
+        "x": 49,
+        "y": 71
+      },
+      "radius": 37,
+      "candidate_confidence": 0.37,
+      "predicted_color": "purple",
+      "color_confidence": 0.473,
+      "distance_scores": {
+        "orange": 211.46,
+        "pink": 208.19,
+        "green": 109.4,
+        "purple": 73.77,
+        "black": 164.71
+      }
+    },
+    {
+      "center": {
+        "x": 89,
+        "y": 109
+      },
+      "radius": 83,
+      "candidate_confidence": 0.83,
+      "predicted_color": "purple",
+      "color_confidence": 0.415,
+      "distance_scores": {
+        "orange": 198.9,
+        "pink": 211.11,
+        "green": 98.04,
+        "purple": 81.91,
+        "black": 179.64
+      }
+    },
+    {
+      "center": {
+        "x": 168,
+        "y": 116
+      },
+      "radius": 61,
+      "candidate_confidence": 0.61,
+      "predicted_color": "orange",
+      "color_confidence": 0.551,
+      "distance_scores": {
+        "orange": 62.86,
+        "pink": 105.68,
+        "green": 148.69,
+        "purple": 183.35,
+        "black": 98.33
+      }
+    },
+    {
+      "center": {
+        "x": 87,
+        "y": 143
+      },
+      "radius": 26,
+      "candidate_confidence": 0.35,
+      "predicted_color": "orange",
+      "color_confidence": 0.753,
+      "distance_scores": {
+        "orange": 34.65,
+        "pink": 65.23,
+        "green": 136.63,
+        "purple": 155.36,
+        "black": 86.29
+      }
+    },
+    {
+      "center": {
+        "x": 156,
+        "y": 154
+      },
+      "radius": 32,
+      "candidate_confidence": 0.35,
+      "predicted_color": "orange",
+      "color_confidence": 0.809,
+      "distance_scores": {
+        "orange": 26.75,
+        "pink": 71.74,
+        "green": 176.41,
+        "purple": 161.51,
+        "black": 87.65
+      }
+    },
+    {
+      "center": {
+        "x": 120,
+        "y": 164
+      },
+      "radius": 31,
+      "candidate_confidence": 0.35,
+      "predicted_color": "orange",
+      "color_confidence": 0.849,
+      "distance_scores": {
+        "orange": 21.07,
+        "pink": 67.02,
+        "green": 176.28,
+        "purple": 158.55,
+        "black": 91.12
+      }
+    },
+    {
+      "center": {
+        "x": 194,
+        "y": 188
+      },
+      "radius": 29,
+      "candidate_confidence": 0.35,
+      "predicted_color": "orange",
+      "color_confidence": 0.525,
+      "distance_scores": {
+        "orange": 66.45,
+        "pink": 79.6,
+        "green": 129.96,
+        "purple": 150.18,
+        "black": 70.66
+      }
+    },
+    {
+      "center": {
+        "x": 99,
+        "y": 193
+      },
+      "radius": 43,
+      "candidate_confidence": 0.43,
+      "predicted_color": "orange",
+      "color_confidence": 0.752,
+      "distance_scores": {
+        "orange": 34.78,
+        "pink": 78.88,
+        "green": 168.76,
+        "purple": 159.76,
+        "black": 76.52
+      }
+    },
+    {
+      "center": {
+        "x": 136,
+        "y": 205
+      },
+      "radius": 48,
+      "candidate_confidence": 0.48,
+      "predicted_color": "orange",
+      "color_confidence": 0.654,
+      "distance_scores": {
+        "orange": 48.5,
+        "pink": 91.48,
+        "green": 169.94,
+        "purple": 167.91,
+        "black": 73.3
+      }
+    }
+  ]
+}
