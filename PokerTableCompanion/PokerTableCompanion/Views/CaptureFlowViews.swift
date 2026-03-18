@@ -32,6 +32,15 @@ struct CaptureIntroView: View {
         .background(AppTheme.background.ignoresSafeArea())
         .navigationTitle("Capture Stack")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                NavigationLink {
+                    HandRecorderView()
+                } label: {
+                    Image(systemName: "square.and.pencil")
+                }
+            }
+        }
         .sheet(isPresented: $showingCamera) {
             CameraPicker { image in
                 guard let image else { return }

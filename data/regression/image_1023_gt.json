@@ -1,0 +1,12 @@
+{
+  "image": "data/regression/image_1023.png",
+  "image_width": 768,
+  "image_height": 1024,
+  "colors": [
+    "red",
+    "pink",
+    "green",
+    "black"
+  ],
+  "annotations": []
+}
