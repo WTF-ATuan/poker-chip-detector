@@ -9,8 +9,8 @@ struct DecodedDetection {
 }
 
 enum ModelOutputMapper {
-    // Matches training dataset.yaml class order.
-    static let classLabels: [String] = ["chip", "1", "2", "3", "4", "5", "10", "100", "500"]
+    // Matches color-first training dataset.yaml class order.
+    static let classLabels: [String] = ["red", "pink", "green", "black"]
 
     static func decodeYOLOOutput(
         _ values: UnsafeBufferPointer<Float>,
@@ -87,26 +87,75 @@ enum ModelOutputMapper {
         return kept
     }
 
+    static func deduplicateByCenterAndRadius(_ detections: [DecodedDetection]) -> [DecodedDetection] {
+        let sorted = detections.sorted { $0.confidence > $1.confidence }
+        var kept: [DecodedDetection] = []
+        kept.reserveCapacity(sorted.count)
+
+        for candidate in sorted {
+            let candidateCenter = CGPoint(
+                x: candidate.normalizedRect.midX,
+                y: candidate.normalizedRect.midY
+            )
+            let candidateRadius = max(
+                candidate.normalizedRect.width,
+                candidate.normalizedRect.height
+            ) * 0.5
+
+            let isDuplicate = kept.contains { existing in
+                let existingCenter = CGPoint(
+                    x: existing.normalizedRect.midX,
+                    y: existing.normalizedRect.midY
+                )
+                let existingRadius = max(
+                    existing.normalizedRect.width,
+                    existing.normalizedRect.height
+                ) * 0.5
+
+                let dx = existingCenter.x - candidateCenter.x
+                let dy = existingCenter.y - candidateCenter.y
+                let centerDistance = sqrt((dx * dx) + (dy * dy))
+
+                let bigger = max(existingRadius, candidateRadius)
+                let smaller = max(0.0001, min(existingRadius, candidateRadius))
+                let radiusRatio = bigger / smaller
+
+                // Treat as duplicate if centers are very close and sizes are similar.
+                return centerDistance < (0.60 * bigger) && radiusRatio < 1.35
+            }
+
+            if !isDuplicate {
+                kept.append(candidate)
+            }
+        }
+
+        return kept
+    }
+
     static func mapDetectionToChipConfig(
         _ detection: DecodedDetection,
         chipConfigs: [ChipColorConfig]
     ) -> ChipColorConfig? {
         if chipConfigs.isEmpty { return nil }
 
-        // Generic class is too noisy for this model composition; skip to reduce false positives.
-        if detection.classLabel == "chip" { return nil }
-
-        // 1) Exact color-name match (if class labels become color names in future datasets)
+        // 1) Exact color-name match (current color-first model path)
         if let byName = chipConfigs.first(where: { $0.name.caseInsensitiveCompare(detection.classLabel) == .orderedSame }) {
             return byName
         }
 
-        // 2) Numeric class label -> closest denomination
+        // 2) Tolerant contains-match for config names (e.g. "Red 1000")
+        if let byContains = chipConfigs.first(where: {
+            $0.name.lowercased().contains(detection.classLabel.lowercased())
+        }) {
+            return byContains
+        }
+
+        // 3) Legacy numeric class label -> closest denomination (kept for compatibility)
         if let denom = Int(detection.classLabel) {
             return chipConfigs.min(by: { abs($0.denomination - denom) < abs($1.denomination - denom) })
         }
 
-        // 3) Generic "chip" fallback -> first config
+        // 4) Safe fallback
         return chipConfigs.first
     }
 

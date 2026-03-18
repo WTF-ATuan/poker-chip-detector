@@ -12,6 +12,7 @@ final class CaptureFlowViewModel: ObservableObject {
     @Published var selectedPreviewImageSize: CGSize?
     @Published var captureSourceLabel = "No photo selected yet"
     @Published var analysisErrorMessage: String?
+    @Published var debugStats: AnalysisDebugStats = .empty
 
     private let analyzer: ChipAnalyzing
     private let sampleLoader = SampleAnalysisLoader()
@@ -29,6 +30,7 @@ final class CaptureFlowViewModel: ObservableObject {
         isAnalyzing = true
         hasProcessedImage = false
         analysisErrorMessage = nil
+        debugStats = .empty
         captureSourceLabel = sourceLabel
         selectedPreviewImage = previewImage
         selectedPreviewImageSize = uiImage?.size
@@ -37,6 +39,7 @@ final class CaptureFlowViewModel: ObservableObject {
         )
         observations = result.observations
         draftDetections = result.detections
+        debugStats = result.debugStats
         captureSourceLabel = result.sourceLabel
         if result.observations.isEmpty {
             analysisErrorMessage = "沒有偵測到籌碼，請換一張角度更俯視、光線更穩定的照片。"
@@ -49,12 +52,14 @@ final class CaptureFlowViewModel: ObservableObject {
         isAnalyzing = true
         hasProcessedImage = false
         analysisErrorMessage = nil
+        debugStats = .empty
         do {
             let loaded = try sampleLoader.loadSampleCapture(chipConfigs: chipConfigs)
             selectedPreviewImage = loaded.image
             selectedPreviewImageSize = nil
             observations = loaded.result.observations
             draftDetections = loaded.result.detections
+            debugStats = loaded.result.debugStats
             captureSourceLabel = loaded.result.sourceLabel
             hasProcessedImage = true
         } catch {

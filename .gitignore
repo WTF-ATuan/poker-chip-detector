@@ -34,3 +34,10 @@ wheels/
 # OS
 .DS_Store
 Thumbs.db
+
+# Training artifacts
+runs/
+data/yolo_color/
+
+# Xcode local user state
+PokerTableCompanion/PokerTableCompanion.xcodeproj/project.xcworkspace/xcuserdata/

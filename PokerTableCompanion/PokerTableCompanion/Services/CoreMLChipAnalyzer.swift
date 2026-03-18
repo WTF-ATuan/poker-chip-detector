@@ -34,9 +34,15 @@ struct CoreMLChipAnalyzer: ChipAnalyzing {
             let pixels = rgbaPixels(from: cgImage)
 
             let decoded = decode(multiArray: multiArray)
-            let filtered = Array(
+            let nmsFiltered = Array(
                 ModelOutputMapper.nonMaxSuppression(decoded, iouThreshold: nmsIoUThreshold)
                     .prefix(maxDetections)
+            )
+            let filtered = ModelOutputMapper.deduplicateByCenterAndRadius(nmsFiltered)
+            let debugStats = AnalysisDebugStats(
+                decodedCount: decoded.count,
+                afterNMSCount: nmsFiltered.count,
+                afterDedupCount: filtered.count
             )
 
             let observations: [ChipTopObservation] = filtered.compactMap { (det: DecodedDetection) -> ChipTopObservation? in
@@ -86,22 +92,28 @@ struct CoreMLChipAnalyzer: ChipAnalyzing {
                 if !legacy.observations.isEmpty {
                     var tagged = legacy
                     tagged.sourceLabel = request.sourceLabel + " (vision-fallback)"
+                    tagged.debugStats = debugStats
                     return tagged
                 }
 
                 // Fallback 2: color-only estimation so UI still shows color tags.
                 let colorOnly = colorOnlyFallback(request: request, cgImage: cgImage)
                 if !colorOnly.observations.isEmpty {
-                    return colorOnly
+                    var tagged = colorOnly
+                    tagged.debugStats = debugStats
+                    return tagged
                 }
-                return colorOnly
+                var tagged = colorOnly
+                tagged.debugStats = debugStats
+                return tagged
             }
 
             let detections = aggregate(observations: observations, chipConfigs: request.chipConfigs)
             return ChipAnalysisResult(
                 sourceLabel: request.sourceLabel + " (coreml)",
                 observations: observations,
-                detections: detections
+                detections: detections,
+                debugStats: debugStats
             )
         } catch {
             // If CoreML request throws, still try color-only fallback before declaring failure.
@@ -340,7 +352,7 @@ struct CoreMLChipAnalyzer: ChipAnalyzing {
 
         let cx = Int(det.normalizedRect.midX * CGFloat(imageWidth))
         let cy = Int(det.normalizedRect.midY * CGFloat(imageHeight))
-        let radius = max(4, Int(min(det.normalizedRect.width, det.normalizedRect.height) * CGFloat(imageWidth) * 0.22))
+        let radius = max(4, Int(min(det.normalizedRect.width, det.normalizedRect.height) * CGFloat(imageWidth) * 0.28))
 
         var sr = 0.0
         var sg = 0.0
@@ -358,6 +370,8 @@ struct CoreMLChipAnalyzer: ChipAnalyzing {
                 let dy = y - cy
                 let dist2 = dx * dx + dy * dy
                 if dist2 > radius * radius { continue }
+                // Prefer a ring region to reduce center-text and highlight pollution.
+                if dist2 < Int(Double(radius * radius) * 0.20) { continue }
 
                 let idx = (y * imageWidth + x) * 4
                 if idx + 2 >= pixels.count { continue }

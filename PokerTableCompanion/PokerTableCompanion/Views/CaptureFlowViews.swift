@@ -153,6 +153,9 @@ struct CaptureIntroView: View {
             Text("observations: \(viewModel.observations.count), groups: \(viewModel.draftDetections.filter { $0.stackCount > 0 || $0.looseCount > 0 }.count)")
                 .font(.caption2)
                 .foregroundStyle(.secondary)
+            Text("decode→nms→dedup: \(viewModel.debugStats.decodedCount) → \(viewModel.debugStats.afterNMSCount) → \(viewModel.debugStats.afterDedupCount)")
+                .font(.caption2)
+                .foregroundStyle(.secondary)
             if let best = viewModel.observations.map(\.confidence).max() {
                 Text("max confidence: \(Int(best * 100))%")
                     .font(.caption2)

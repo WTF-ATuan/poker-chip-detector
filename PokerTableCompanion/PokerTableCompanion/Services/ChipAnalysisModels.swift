@@ -68,4 +68,17 @@ struct ChipAnalysisResult {
     var sourceLabel: String
     var observations: [ChipTopObservation]
     var detections: [StackDetectionResult]
+    var debugStats: AnalysisDebugStats = .empty
+}
+
+struct AnalysisDebugStats {
+    var decodedCount: Int
+    var afterNMSCount: Int
+    var afterDedupCount: Int
+
+    static let empty = AnalysisDebugStats(
+        decodedCount: 0,
+        afterNMSCount: 0,
+        afterDedupCount: 0
+    )
 }
