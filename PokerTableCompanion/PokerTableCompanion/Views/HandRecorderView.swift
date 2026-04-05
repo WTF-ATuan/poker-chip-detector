@@ -3,6 +3,7 @@ import UIKit
 
 struct HandRecorderView: View {
     @State private var selectedMode: HandRecordMode = .preflopAllIn
+    @State private var activePage: RecorderPage = .record
     @State private var tableSize: Int = 7
     @State private var activePositionIDs: Set<String> = []
     @State private var selectedStreet: PokerStreet = .preflop
@@ -18,6 +19,11 @@ struct HandRecorderView: View {
     @State private var editingSlot: CardEditingSlot?
     @State private var savedHands: [SavedHandRecord] = HandRecordStorage.load()
     @State private var copiedSummaryLabel: String?
+    @State private var shareItems: [Any] = []
+    @State private var isShareSheetPresented = false
+    @State private var stackInputTarget: StackInputTarget?
+    @State private var stackInputText: String = ""
+    @State private var isStackInputPresented = false
 
     var body: some View {
         mainContent
@@ -25,6 +31,19 @@ struct HandRecorderView: View {
         .navigationTitle("Hand Recorder")
         .navigationBarTitleDisplayMode(.inline)
         .safeAreaInset(edge: .bottom, spacing: 0) { bottomPickerInset }
+        .sheet(isPresented: $isShareSheetPresented) {
+            ActivityShareSheet(activityItems: shareItems)
+        }
+        .alert("Edit Stack (BB)", isPresented: $isStackInputPresented) {
+            TextField("Stack BB", text: $stackInputText)
+                .keyboardType(.decimalPad)
+            Button("Cancel", role: .cancel) {}
+            Button("Save") {
+                commitStackInput()
+            }
+        } message: {
+            Text("Enter stack size in BB (0 - 100).")
+        }
         .animation(.easeInOut(duration: 0.18), value: editingSlot)
         .onAppear {
             syncTableState()
@@ -54,16 +73,25 @@ struct HandRecorderView: View {
     private var mainContent: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                introCard
-                modeCard
-                tableCard
-                positionCard
-                actorCard
-                heroHandCard
-                actionsCard
-                timelineCard
-                summaryCard
-                savedHandsCard
+                Picker("Recorder Page", selection: $activePage) {
+                    ForEach(RecorderPage.allCases) { page in
+                        Text(page.title).tag(page)
+                    }
+                }
+                .pickerStyle(.segmented)
+
+                if activePage == .record {
+                    introCard
+                    tableCard
+                    positionCard
+                    actorCard
+                    heroHandCard
+                    actionsCard
+                    timelineCard
+                } else {
+                    summaryCard
+                    savedHandsCard
+                }
             }
             .padding(20)
         }
@@ -246,25 +274,6 @@ struct HandRecorderView: View {
                     }
                 }
             }
-
-            if selectedMode == .fullHand || selectedStreet != .preflop {
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Board")
-                        .font(.headline)
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 10) {
-                            ForEach(0..<5, id: \.self) { index in
-                                PokerCardButton(
-                                    card: boardCards[index],
-                                    placeholder: boardPlaceholder(index)
-                                ) {
-                                    editingSlot = .board(index)
-                                }
-                            }
-                        }
-                    }
-                }
-            }
         }
         .cardStyle()
     }
@@ -309,21 +318,28 @@ struct HandRecorderView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     ForEach(availableActorChoices) { actor in
-                        Button {
-                            selectedActor = actor
-                        } label: {
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text(actor.title)
-                                    .font(.subheadline.weight(.semibold))
-                                Text(actorStackSummary(for: actor))
-                                    .font(.caption2)
-                                    .foregroundStyle(.white.opacity(0.7))
+                        let isSelected = selectedActor == actor
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(actor.title)
+                                .font(.subheadline.weight(.semibold))
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.8)
+                            Text(actorStackSummary(for: actor))
+                                .font(.caption2.weight(.semibold))
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.8)
+                        }
+                        .padding(.horizontal, 14)
+                        .padding(.vertical, 10)
+                        .background(isSelected ? AppTheme.chipAccent : AppTheme.cardAlt)
+                        .foregroundStyle(isSelected ? Color.black.opacity(0.9) : .white)
+                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                        .onTapGesture {
+                            if isSelected {
+                                presentStackInput(for: actor)
+                            } else {
+                                selectedActor = actor
                             }
-                            .padding(.horizontal, 14)
-                            .padding(.vertical, 10)
-                            .background(selectedActor == actor ? AppTheme.chipAccent : AppTheme.cardAlt)
-                            .foregroundStyle(.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                         }
                     }
                 }
@@ -390,7 +406,7 @@ struct HandRecorderView: View {
     private var actionsCard: some View {
         VStack(alignment: .leading, spacing: 14) {
             HStack {
-                Text(selectedMode == .preflopAllIn ? "Preflop Shortcuts" : "Action Composer")
+                Text("Action Shortcuts")
                     .font(.title3.weight(.semibold))
                 Spacer()
                 Text(activeActorSummary)
@@ -412,6 +428,25 @@ struct HandRecorderView: View {
                 }
             }
             .pickerStyle(.segmented)
+
+            if selectedStreet != .preflop {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Board for \(selectedStreet.title)")
+                        .font(.headline)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 10) {
+                            ForEach(boardIndices(for: selectedStreet), id: \.self) { index in
+                                PokerCardButton(
+                                    card: boardCards[index],
+                                    placeholder: boardPlaceholder(index)
+                                ) {
+                                    editingSlot = .board(index)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
             HStack {
                 Text("Pot Size")
@@ -575,9 +610,20 @@ struct HandRecorderView: View {
             summaryBox(title: "HH Text", text: handHistoryStyleText)
 
             HStack(spacing: 10) {
-                exportChip(label: "TXT")
-                exportChip(label: "Screenshot")
-                exportChip(label: "JSON")
+                Button("Copy HH") {
+                    copyToPasteboard(buildPokerStarsStyleHandHistory(), label: "HH")
+                }
+                .buttonStyle(.bordered)
+
+                Button("Share HH TXT") {
+                    shareHandHistoryTextFile()
+                }
+                .buttonStyle(.bordered)
+
+                Button("Share OHH") {
+                    shareOHHFile()
+                }
+                .buttonStyle(.bordered)
             }
 
             HStack(spacing: 10) {
@@ -586,8 +632,8 @@ struct HandRecorderView: View {
                 }
                 .buttonStyle(.bordered)
 
-                Button("Copy HH") {
-                    copyToPasteboard(handHistoryStyleText, label: "HH")
+                Button("Open GTO Upload") {
+                    openGtoWizardUpload()
                 }
                 .buttonStyle(.bordered)
 
@@ -704,6 +750,19 @@ struct HandRecorderView: View {
         }
     }
 
+    private func boardIndices(for street: PokerStreet) -> [Int] {
+        switch street {
+        case .preflop:
+            return []
+        case .flop:
+            return [0, 1, 2]
+        case .turn:
+            return [0, 1, 2, 3]
+        case .river:
+            return [0, 1, 2, 3, 4]
+        }
+    }
+
     private func formattedBB(_ amount: Double) -> String {
         String(format: "%.1f BB", amount)
     }
@@ -748,11 +807,11 @@ struct HandRecorderView: View {
     }
 
     private var activeActions: [HandActionKind] {
-        selectedMode == .preflopAllIn ? HandActionKind.preflopFastActions : HandActionKind.fullHandActions
+        HandActionKind.preflopFastActions
     }
 
     private var actionAmountUpperBound: Double {
-        selectedMode == .preflopAllIn ? max(0, remainingStackValue(for: selectedActor)) : 100
+        max(0, remainingStackValue(for: selectedActor))
     }
 
     private var positionsOrderedFromHero: [TablePositionOption] {
@@ -843,26 +902,23 @@ struct HandRecorderView: View {
 
     private func isActionAllowed(_ action: HandActionKind) -> Bool {
         let facingBet = isFacingBet(selectedActor)
-        if selectedMode == .preflopAllIn {
-            switch action {
-            case .fold:
-                return facingBet
-            case .check:
-                return !facingBet
-            case .call:
-                return facingBet && amountToCall(for: selectedActor) > 0
-            case .raise:
-                return remainingStackValue(for: selectedActor) > 0
-            case .allIn:
-                return remainingStackValue(for: selectedActor) > 0
-            default:
-                return false
+        switch action {
+        case .fold:
+            return facingBet
+        case .check:
+            return !facingBet
+        case .call:
+            return facingBet && amountToCall(for: selectedActor) > 0
+        case .raise:
+            return remainingStackValue(for: selectedActor) > 0
+        case .allIn:
+            return remainingStackValue(for: selectedActor) > 0
+        default:
+            if facingBet {
+                return !action.disallowedWhenFacingAggression
             }
+            return !action.disallowedWhenFacingNoBet
         }
-        if facingBet {
-            return !action.disallowedWhenFacingAggression
-        }
-        return !action.disallowedWhenFacingNoBet
     }
 
     private var actorTurnOrder: [ActionActor] {
@@ -945,6 +1001,31 @@ struct HandRecorderView: View {
         actionAmountBB = clampedAmountValue(roundedToHalf)
     }
 
+    private func presentStackInput(for actor: ActionActor) {
+        switch actor {
+        case .hero:
+            stackInputTarget = .hero
+            stackInputText = String(format: "%.1f", heroStackBB)
+        case .position(let id):
+            stackInputTarget = .position(id)
+            stackInputText = String(format: "%.1f", stackValue(for: id))
+        }
+        isStackInputPresented = true
+    }
+
+    private func commitStackInput() {
+        guard let value = Double(stackInputText) else { return }
+        let clamped = clampedStackValue(value)
+        switch stackInputTarget {
+        case .hero:
+            heroStackBB = clamped
+        case .position(let id):
+            stackByPositionID[id] = clamped
+        case .none:
+            break
+        }
+    }
+
     private func latestAction(on street: PokerStreet, for actor: ActionActor) -> HandActionEntry? {
         currentStreetActions.last(where: { $0.street == street && $0.actor == actor })
     }
@@ -1022,7 +1103,7 @@ struct HandRecorderView: View {
         if !recordedActions.isEmpty {
             base += " • " + recordedActions.map(\.compressedLine).joined(separator: " • ")
         }
-        if selectedMode == .fullHand && !boardText.isEmpty {
+        if !boardText.isEmpty {
             base += " • Board \(boardText)"
         }
         return base
@@ -1030,7 +1111,6 @@ struct HandRecorderView: View {
 
     private var studySummaryText: String {
         var lines = [
-            "Mode: \(selectedMode.title)",
             "Table: \(tableSize)-max",
             "Hero: \(TablePositionOption.label(for: selectedPositionID)) / \(formattedBB(heroStackBB)) / \(heroHandText)"
         ]
@@ -1067,6 +1147,136 @@ struct HandRecorderView: View {
     private func copyToPasteboard(_ text: String, label: String) {
         UIPasteboard.general.string = text
         copiedSummaryLabel = label
+    }
+
+    private func buildPokerStarsStyleHandHistory() -> String {
+        let handID = Int(Date().timeIntervalSince1970)
+        let timeStamp = Date().formatted(date: .numeric, time: .standard)
+        var lines: [String] = []
+        lines.append("PokerTableCompanion Hand #\(handID): Hold'em No Limit (\(tableSize)-max) - \(timeStamp)")
+        lines.append("Table 'Recorder' \(tableSize)-max Seat #1 is the button")
+
+        let seats = allPositions.enumerated().map { index, position in
+            (index + 1, position)
+        }
+        for (seat, position) in seats {
+            let stack = position.id == selectedPositionID ? heroStackBB : stackValue(for: position.id)
+            lines.append("Seat \(seat): \(playerName(for: position.id)) (\(String(format: "%.1f", stack)) BB)")
+        }
+
+        lines.append("*** HOLE CARDS ***")
+        lines.append("Dealt to Hero [\(heroCards.compactMap { $0.map(cardCode) }.joined(separator: " "))]")
+
+        for street in PokerStreet.allCases {
+            let entries = recordedActions.filter { $0.street == street }
+            guard !entries.isEmpty else { continue }
+            lines.append(streetHeader(for: street))
+            for entry in entries {
+                lines.append(formatActionLine(entry))
+            }
+        }
+
+        lines.append("*** SUMMARY ***")
+        lines.append("Total pot \(String(format: "%.1f", currentPotBB)) BB")
+        return lines.joined(separator: "\n")
+    }
+
+    private func shareHandHistoryTextFile() {
+        shareFile(
+            named: "hand-history-\(Int(Date().timeIntervalSince1970)).txt",
+            contents: buildPokerStarsStyleHandHistory(),
+            label: "HH TXT"
+        )
+    }
+
+    private func shareOHHFile() {
+        let export = OHHExportHand(
+            tableSize: tableSize,
+            heroPositionID: selectedPositionID,
+            heroStackBB: heroStackBB,
+            stackByPositionID: stackByPositionID,
+            heroCards: heroCards.compactMap { $0.map(cardCode) },
+            boardCards: boardCards.compactMap { $0.map(cardCode) },
+            actions: recordedActions.map {
+                OHHExportAction(
+                    street: $0.street.rawValue,
+                    actorID: $0.actor.id,
+                    action: $0.action.rawValue,
+                    amountBB: $0.amountBB,
+                    remainingStackBB: $0.remainingStackBB
+                )
+            }
+        )
+
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+        guard let data = try? encoder.encode(["ohh": export]),
+              let text = String(data: data, encoding: .utf8) else {
+            copiedSummaryLabel = "Export Failed"
+            return
+        }
+
+        shareFile(
+            named: "hand-history-\(Int(Date().timeIntervalSince1970)).ohh",
+            contents: text,
+            label: "OHH"
+        )
+    }
+
+    private func shareFile(named fileName: String, contents: String, label: String) {
+        do {
+            let url = FileManager.default.temporaryDirectory.appendingPathComponent(fileName)
+            try contents.write(to: url, atomically: true, encoding: .utf8)
+            shareItems = [url]
+            isShareSheetPresented = true
+            copiedSummaryLabel = "Shared \(label)"
+        } catch {
+            copiedSummaryLabel = "Share Failed"
+        }
+    }
+
+    private func openGtoWizardUpload() {
+        guard let url = URL(string: "https://app.gtowizard.com/analyze/uploads") else { return }
+        UIApplication.shared.open(url)
+    }
+
+    private func playerName(for positionID: String) -> String {
+        if positionID == selectedPositionID { return "Hero" }
+        return "Villain-\(TablePositionOption.label(for: positionID))"
+    }
+
+    private func streetHeader(for street: PokerStreet) -> String {
+        switch street {
+        case .preflop:
+            return "*** PRE-FLOP ***"
+        case .flop:
+            return "*** FLOP *** [\(boardCards[0...2].compactMap { $0.map(cardCode) }.joined(separator: " "))]"
+        case .turn:
+            return "*** TURN *** [\(boardCards[0...3].compactMap { $0.map(cardCode) }.joined(separator: " "))]"
+        case .river:
+            return "*** RIVER *** [\(boardCards[0...4].compactMap { $0.map(cardCode) }.joined(separator: " "))]"
+        }
+    }
+
+    private func formatActionLine(_ entry: HandActionEntry) -> String {
+        let actorName: String
+        switch entry.actor {
+        case .hero:
+            actorName = "Hero"
+        case .position(let id):
+            actorName = "Villain-\(TablePositionOption.label(for: id))"
+        }
+        if let amount = entry.amountBB {
+            if entry.action == .call {
+                return "\(actorName): calls \(String(format: "%.1f", amount)) BB"
+            } else if entry.action == .raise {
+                return "\(actorName): raises to \(String(format: "%.1f", amount)) BB"
+            } else if entry.action == .allIn {
+                return "\(actorName): raises \(String(format: "%.1f", amount)) BB and is all-in"
+            }
+            return "\(actorName): \(entry.action.timelineVerb) \(String(format: "%.1f", amount)) BB"
+        }
+        return "\(actorName): \(entry.action.timelineVerb)"
     }
 
     private func cardCode(_ card: PlayingCard) -> String {
@@ -1381,6 +1591,25 @@ private enum HandRecordMode: String, CaseIterable, Identifiable {
             return "Use this when the hand continues postflop and you need full street-by-street notes."
         }
     }
+}
+
+private enum RecorderPage: String, CaseIterable, Identifiable {
+    case record
+    case library
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .record: return "Record"
+        case .library: return "Library"
+        }
+    }
+}
+
+private enum StackInputTarget: Equatable {
+    case hero
+    case position(String)
 }
 
 private enum ActionActor: Hashable, Identifiable {
@@ -1772,6 +2001,52 @@ private struct SavedActionEntry: Codable {
     }
 }
 
+private struct OHHExportHand: Codable {
+    let spec_version: String = "0.1-draft"
+    let game_type: String = "NLH"
+    let table_size: Int
+    let hero_position_id: String
+    let hero_stack_bb: Double
+    let stack_by_position_id: [String: Double]
+    let hero_cards: [String]
+    let board_cards: [String]
+    let actions: [OHHExportAction]
+
+    init(
+        tableSize: Int,
+        heroPositionID: String,
+        heroStackBB: Double,
+        stackByPositionID: [String: Double],
+        heroCards: [String],
+        boardCards: [String],
+        actions: [OHHExportAction]
+    ) {
+        self.table_size = tableSize
+        self.hero_position_id = heroPositionID
+        self.hero_stack_bb = heroStackBB
+        self.stack_by_position_id = stackByPositionID
+        self.hero_cards = heroCards
+        self.board_cards = boardCards
+        self.actions = actions
+    }
+}
+
+private struct OHHExportAction: Codable {
+    let street: String
+    let actor_id: String
+    let action: String
+    let amount_bb: Double?
+    let remaining_stack_bb: Double?
+
+    init(street: String, actorID: String, action: String, amountBB: Double?, remainingStackBB: Double?) {
+        self.street = street
+        self.actor_id = actorID
+        self.action = action
+        self.amount_bb = amountBB
+        self.remaining_stack_bb = remainingStackBB
+    }
+}
+
 private extension HandActionEntry {
     init(saved: SavedActionEntry) {
         self.init(
@@ -1795,6 +2070,16 @@ private extension ActionActor {
             self = .hero
         }
     }
+}
+
+private struct ActivityShareSheet: UIViewControllerRepresentable {
+    let activityItems: [Any]
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 
 private enum HandRecordStorage {

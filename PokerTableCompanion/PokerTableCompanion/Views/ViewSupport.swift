@@ -1,12 +1,12 @@
 import SwiftUI
 
 enum AppTheme {
-    static let background = Color(hex: "#071611")
-    static let backgroundRaised = Color(hex: "#0E221B")
-    static let card = Color(hex: "#112A22")
-    static let cardAlt = Color(hex: "#18382E")
-    static let stroke = Color.white.opacity(0.08)
-    static let chipAccent = Color(hex: "#E05F34")
+    static let background = Color(hex: "#08090B")
+    static let backgroundRaised = Color(hex: "#14161B")
+    static let card = Color(hex: "#171A20")
+    static let cardAlt = Color(hex: "#1F232B")
+    static let stroke = Color.white.opacity(0.12)
+    static let chipAccent = Color(hex: "#FF6A2A")
 }
 
 extension View {
