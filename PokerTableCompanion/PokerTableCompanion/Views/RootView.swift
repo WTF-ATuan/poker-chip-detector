@@ -3,7 +3,7 @@ import SwiftUI
 struct RootView: View {
     var body: some View {
         NavigationStack {
-            CaptureIntroView()
+            HandRecorderView()
         }
         .tint(AppTheme.chipAccent)
     }
