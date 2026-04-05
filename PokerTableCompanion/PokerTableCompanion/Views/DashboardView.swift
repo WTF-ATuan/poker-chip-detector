@@ -72,16 +72,18 @@ struct DashboardView: View {
                 ActionRow(title: "Configure chip colors", subtitle: "Map colors to denominations", color: "#A46D1E")
             }
 
-            NavigationLink {
-                CaptureIntroView()
-            } label: {
-                ActionRow(title: "Run capture flow", subtitle: "Photo, review, and BB summary", color: "#247A57")
-            }
+            if AppFeatures.cameraCaptureEnabled {
+                NavigationLink {
+                    CaptureIntroView()
+                } label: {
+                    ActionRow(title: "Run capture flow", subtitle: "Photo, review, and BB summary", color: "#247A57")
+                }
 
-            NavigationLink {
-                OnboardingFlowView(embeddedInNavigation: true)
-            } label: {
-                ActionRow(title: "View guided setup", subtitle: "Teach players how to capture correctly", color: "#1F3B2F")
+                NavigationLink {
+                    OnboardingFlowView(embeddedInNavigation: true)
+                } label: {
+                    ActionRow(title: "View guided setup", subtitle: "Teach players how to capture correctly", color: "#1F3B2F")
+                }
             }
         }
     }

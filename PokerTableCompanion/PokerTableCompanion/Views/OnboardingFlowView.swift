@@ -87,13 +87,15 @@ struct OnboardingFlowView: View {
             }
             .buttonStyle(.bordered)
 
-            NavigationLink {
-                CaptureIntroView()
-            } label: {
-                Text("Start capture flow")
-                    .frame(maxWidth: .infinity)
+            if AppFeatures.cameraCaptureEnabled {
+                NavigationLink {
+                    CaptureIntroView()
+                } label: {
+                    Text("Start capture flow")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
             }
-            .buttonStyle(.borderedProminent)
 
             if !embeddedInNavigation {
                 Button("Enter app") {

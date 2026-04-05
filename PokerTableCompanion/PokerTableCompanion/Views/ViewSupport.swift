@@ -9,6 +9,10 @@ enum AppTheme {
     static let chipAccent = Color(hex: "#FF6A2A")
 }
 
+enum AppFeatures {
+    static let cameraCaptureEnabled = false
+}
+
 extension View {
     func cardStyle() -> some View {
         padding(18)

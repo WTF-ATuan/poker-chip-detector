@@ -13,7 +13,7 @@ struct CaptureIntroView: View {
                 instructionCard
                 captureMethods
                 previewCard
-                if viewModel.isAnalyzing {
+                if AppFeatures.cameraCaptureEnabled && viewModel.isAnalyzing {
                     ProgressView("Analyzing image…")
                         .padding(.top, 12)
                 }
@@ -25,7 +25,7 @@ struct CaptureIntroView: View {
                         .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
-                .disabled(!viewModel.hasProcessedImage)
+                .disabled(!AppFeatures.cameraCaptureEnabled || !viewModel.hasProcessedImage)
             }
             .padding(20)
         }
@@ -56,6 +56,7 @@ struct CaptureIntroView: View {
             .ignoresSafeArea()
         }
         .task(id: selectedItem) {
+            guard AppFeatures.cameraCaptureEnabled else { return }
             guard let selectedItem else { return }
             let imageData = try? await selectedItem.loadTransferable(type: Data.self)
             let uiImage = imageData.flatMap(UIImage.init(data:))
@@ -80,20 +81,28 @@ struct CaptureIntroView: View {
 
     private var captureMethods: some View {
         VStack(spacing: 12) {
-            Button {
-                showingCamera = true
-            } label: {
-                Label("Capture with camera", systemImage: "camera.fill")
-                    .frame(maxWidth: .infinity)
-            }
-            .buttonStyle(.borderedProminent)
+            if AppFeatures.cameraCaptureEnabled {
+                Button {
+                    showingCamera = true
+                } label: {
+                    Label("Capture with camera", systemImage: "camera.fill")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
 
-            PhotosPicker(selection: $selectedItem, matching: .images) {
-                Label("Choose from library", systemImage: "photo.on.rectangle")
-                    .frame(maxWidth: .infinity)
+                PhotosPicker(selection: $selectedItem, matching: .images) {
+                    Label("Choose from library", systemImage: "photo.on.rectangle")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+            } else {
+                Label("Capture feature is hidden for this build", systemImage: "eye.slash")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 10)
+                    .background(AppTheme.cardAlt)
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             }
-            .buttonStyle(.bordered)
-
         }
     }
 
@@ -102,7 +111,7 @@ struct CaptureIntroView: View {
             Text("Selected Input")
                 .font(.title3.weight(.semibold))
             Group {
-                if let preview = viewModel.selectedPreviewImage {
+                if AppFeatures.cameraCaptureEnabled, let preview = viewModel.selectedPreviewImage {
                     ChipPreviewOverlay(
                         preview: preview,
                         observations: viewModel.observations,
@@ -115,13 +124,20 @@ struct CaptureIntroView: View {
                         .fill(AppTheme.backgroundRaised)
                         .frame(height: 180)
                         .overlay(
-                            Image(systemName: "camera.macro")
-                                .font(.system(size: 40))
-                                .foregroundStyle(.secondary)
+                            VStack(spacing: 8) {
+                                Image(systemName: AppFeatures.cameraCaptureEnabled ? "camera.macro" : "eye.slash")
+                                    .font(.system(size: 32))
+                                    .foregroundStyle(.secondary)
+                                if !AppFeatures.cameraCaptureEnabled {
+                                    Text("Capture is disabled in this build")
+                                        .font(.footnote)
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
                         )
                 }
             }
-            Text(viewModel.captureSourceLabel)
+            Text(AppFeatures.cameraCaptureEnabled ? viewModel.captureSourceLabel : "No capture source")
                 .font(.footnote)
                 .foregroundStyle(.secondary)
 
