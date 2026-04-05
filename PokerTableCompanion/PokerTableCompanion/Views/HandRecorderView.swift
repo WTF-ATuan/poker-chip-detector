@@ -24,6 +24,8 @@ struct HandRecorderView: View {
     @State private var stackInputTarget: StackInputTarget?
     @State private var stackInputText: String = ""
     @State private var isStackInputPresented = false
+    @State private var sessionHandsSaved: Int = 0
+    @State private var sessionActionsLogged: Int = 0
 
     var body: some View {
         mainContent
@@ -89,6 +91,7 @@ struct HandRecorderView: View {
                     actionsCard
                     timelineCard
                 } else {
+                    sessionStatsCard
                     summaryCard
                     savedHandsCard
                 }
@@ -456,90 +459,100 @@ struct HandRecorderView: View {
                     .font(.headline)
             }
 
-            HStack(spacing: 8) {
-                stepChip(label: "33%") { applyPotFraction(0.33) }
-                stepChip(label: "50%") { applyPotFraction(0.5) }
-                stepChip(label: "75%") { applyPotFraction(0.75) }
-                stepChip(label: "100%") { applyPotFraction(1.0) }
-            }
-            .font(.footnote.weight(.semibold))
-
-            HStack {
-                Text("Amount")
-                    .foregroundStyle(.white.opacity(0.72))
-                Spacer()
-                Text(formattedBB(actionAmountBB))
-                    .font(.headline)
-            }
-
-            HStack(spacing: 8) {
-                stepChip(label: "-5", repeatsOnLongPress: true) { actionAmountBB = clampedAmountValue(actionAmountBB - 5) }
-                stepChip(label: "-") { actionAmountBB = clampedAmountValue(actionAmountBB - 0.5) }
-                stepChip(label: "+") { actionAmountBB = clampedAmountValue(actionAmountBB + 0.5) }
-                stepChip(label: "+5", repeatsOnLongPress: true) { actionAmountBB = clampedAmountValue(actionAmountBB + 5) }
-            }
-            .font(.footnote.weight(.semibold))
-
-            VStack(alignment: .leading, spacing: 6) {
-                HStack {
-                    Text("Amount Slider")
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(.white.opacity(0.65))
-                    Spacer()
-                    Text("Max \(formattedBB(actionAmountUpperBound))")
-                        .font(.caption.weight(.semibold))
-                        .foregroundStyle(.white.opacity(0.65))
-                }
-                Slider(
-                    value: Binding(
-                        get: { actionAmountBB },
-                        set: { actionAmountBB = clampedAmountValue($0) }
-                    ),
-                    in: 0...max(1, actionAmountUpperBound),
-                    step: 1
-                )
-                .disabled(actionAmountUpperBound <= 0)
-            }
-
-            Text("Pick street, adjust amount, then tap action.")
-                .font(.footnote)
-                .foregroundStyle(.white.opacity(0.62))
-
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
-                ForEach(filteredActions) { action in
-                    Button {
-                        addAction(action)
-                    } label: {
-                        VStack(spacing: 6) {
-                            Text(action.title)
-                                .font(.headline)
-                            if let displayAmount = displayedAmount(for: action) {
-                                Text(formattedBB(displayAmount))
-                                    .font(.caption)
-                                    .foregroundStyle(.white.opacity(0.72))
-                            } else {
-                                Text("No amount")
-                                    .font(.caption)
-                                    .foregroundStyle(.white.opacity(0.5))
-                            }
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 14)
-                        .background(AppTheme.cardAlt)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 18, style: .continuous)
-                                .stroke(AppTheme.stroke, lineWidth: 1)
-                        )
-                        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-                    }
-                    .buttonStyle(.plain)
-                }
-            }
-
-            if filteredActions.isEmpty {
-                Text("No valid shortcuts right now. Change actor/street or add previous action first.")
+            if isAllInRunoutMode {
+                Text("All active players are all-in. Action buttons are hidden; set runout board cards to finish the hand.")
                     .font(.footnote)
-                    .foregroundStyle(.white.opacity(0.6))
+                    .foregroundStyle(.white.opacity(0.72))
+            } else {
+                HStack(spacing: 8) {
+                    stepChip(label: "33%") { applyPotFraction(0.33) }
+                    stepChip(label: "50%") { applyPotFraction(0.5) }
+                    stepChip(label: "75%") { applyPotFraction(0.75) }
+                    stepChip(label: "100%") { applyPotFraction(1.0) }
+                }
+                .font(.footnote.weight(.semibold))
+
+                HStack {
+                    Text("Amount")
+                        .foregroundStyle(.white.opacity(0.72))
+                    Spacer()
+                    Text(formattedBB(actionAmountBB))
+                        .font(.headline)
+                }
+
+                HStack(spacing: 8) {
+                    stepChip(label: "-5", repeatsOnLongPress: true) { actionAmountBB = clampedAmountValue(actionAmountBB - 5) }
+                    stepChip(label: "-") { actionAmountBB = clampedAmountValue(actionAmountBB - 0.5) }
+                    stepChip(label: "+") { actionAmountBB = clampedAmountValue(actionAmountBB + 0.5) }
+                    stepChip(label: "+5", repeatsOnLongPress: true) { actionAmountBB = clampedAmountValue(actionAmountBB + 5) }
+                }
+                .font(.footnote.weight(.semibold))
+
+                VStack(alignment: .leading, spacing: 6) {
+                    HStack {
+                        Text("Amount Slider")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(.white.opacity(0.65))
+                        Spacer()
+                        Text("Max \(formattedBB(actionAmountUpperBound))")
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(.white.opacity(0.65))
+                    }
+                    Slider(
+                        value: Binding(
+                            get: { actionAmountBB },
+                            set: { actionAmountBB = clampedAmountValue($0) }
+                        ),
+                        in: 0...max(1, actionAmountUpperBound),
+                        step: 1
+                    )
+                    .disabled(actionAmountUpperBound <= 0)
+                }
+
+                Text("Pick street, adjust amount, then tap action.")
+                    .font(.footnote)
+                    .foregroundStyle(.white.opacity(0.62))
+
+                quickActionGestureStrip
+
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 10) {
+                        ForEach(filteredActions) { action in
+                            Button {
+                                addAction(action)
+                            } label: {
+                                VStack(spacing: 6) {
+                                    Text(action.title)
+                                        .font(.headline)
+                                    if let displayAmount = displayedAmount(for: action) {
+                                        Text(formattedBB(displayAmount))
+                                            .font(.caption)
+                                            .foregroundStyle(.white.opacity(0.72))
+                                    } else {
+                                        Text("No amount")
+                                            .font(.caption)
+                                            .foregroundStyle(.white.opacity(0.5))
+                                    }
+                                }
+                                .frame(width: 130)
+                                .padding(.vertical, 14)
+                                .background(AppTheme.cardAlt)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                                        .stroke(AppTheme.stroke, lineWidth: 1)
+                                )
+                                .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                }
+
+                if filteredActions.isEmpty {
+                    Text("No valid shortcuts right now. Change actor/street or add previous action first.")
+                        .font(.footnote)
+                        .foregroundStyle(.white.opacity(0.6))
+                }
             }
         }
         .cardStyle()
@@ -552,41 +565,87 @@ struct HandRecorderView: View {
                     .font(.title3.weight(.semibold))
                 Spacer()
                 if !recordedActions.isEmpty {
-                    Button("Clear") {
-                        recordedActions.removeAll()
-                        selectedStreet = .preflop
-                        selectedActor = .hero
-                        syncActionAmountRange()
+                    Button {
+                        saveCurrentHand()
+                    } label: {
+                        Image(systemName: "heart.fill")
+                            .foregroundStyle(AppTheme.chipAccent)
+                    }
+                    .buttonStyle(.plain)
+                }
+                if !recordedActions.isEmpty {
+                    Button("Undo") {
+                        undoLastAction()
                     }
                     .font(.footnote.weight(.semibold))
                 }
+                if !recordedActions.isEmpty {
+                    Button("Clear") {
+                        startNewHand()
+                    }
+                    .font(.footnote.weight(.semibold))
+                }
+                Button("New Hand") {
+                    startNewHand()
+                }
+                .font(.footnote.weight(.semibold))
             }
 
             if recordedActions.isEmpty {
                 Text("No actions yet. Tap a quick action to build the line.")
                     .foregroundStyle(.white.opacity(0.62))
             } else {
-                ForEach(recordedActions) { entry in
-                    HStack(alignment: .top) {
-                        Text(entry.street.shortLabel)
+                ForEach(timelineStreetSections, id: \.self) { street in
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text(street.title.uppercased())
                             .font(.caption.weight(.bold))
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 5)
-                            .background(AppTheme.chipAccent.opacity(0.18))
-                            .clipShape(Capsule())
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(entry.summaryLine)
-                                .font(.headline)
-                            Text(entry.detailLine)
-                                .font(.subheadline)
-                                .foregroundStyle(.white.opacity(0.72))
+                            .foregroundStyle(AppTheme.chipAccent)
+
+                        ForEach(recordedActions.filter { $0.street == street }) { entry in
+                            HStack(alignment: .top) {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(entry.summaryLine)
+                                        .font(.headline)
+                                        .foregroundStyle(entry.actor == .hero ? AppTheme.chipAccent : .white)
+                                    Text(entry.detailLine)
+                                        .font(.subheadline)
+                                        .foregroundStyle(.white.opacity(0.72))
+                                }
+                                Spacer()
+                            }
+                            .padding(12)
+                            .background(entry.actor == .hero ? AppTheme.chipAccent.opacity(0.12) : AppTheme.cardAlt)
+                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                         }
-                        Spacer()
                     }
-                    .padding(12)
-                    .background(AppTheme.cardAlt)
-                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                 }
+            }
+        }
+        .cardStyle()
+    }
+
+    private var sessionStatsCard: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Session Stats")
+                .font(.title3.weight(.semibold))
+            HStack {
+                Text("Saved Hands")
+                Spacer()
+                Text("\(sessionHandsSaved)")
+                    .font(.headline)
+            }
+            HStack {
+                Text("Logged Actions")
+                Spacer()
+                Text("\(sessionActionsLogged)")
+                    .font(.headline)
+            }
+            HStack {
+                Text("Avg Actions / Hand")
+                Spacer()
+                let avg = sessionHandsSaved > 0 ? Double(sessionActionsLogged) / Double(sessionHandsSaved) : 0
+                Text(String(format: "%.1f", avg))
+                    .font(.headline)
             }
         }
         .cardStyle()
@@ -714,12 +773,54 @@ struct HandRecorderView: View {
                 remainingStackBB: remainingStack
             )
         )
-        if isCurrentStreetComplete() {
+        sessionActionsLogged += 1
+        if isAllInRunoutMode {
+            selectedStreet = .river
+            selectedActor = .hero
+        } else if isCurrentStreetComplete() {
             advanceStreetIfPossible()
         } else {
             moveToNextActor()
         }
         syncActionAmountRange()
+    }
+
+    private func undoLastAction() {
+        guard let removed = recordedActions.popLast() else { return }
+        selectedStreet = removed.street
+        selectedActor = removed.actor
+        sessionActionsLogged = max(0, sessionActionsLogged - 1)
+        syncActionAmountRange()
+    }
+
+    private func startNewHand() {
+        recordedActions.removeAll()
+        heroCards = [nil, nil]
+        boardCards = [nil, nil, nil, nil, nil]
+        selectedStreet = .preflop
+        selectedActor = .hero
+        actionAmountBB = 2.5
+        copiedSummaryLabel = nil
+        syncActionAmountRange()
+    }
+
+    private func handleQuickActionDrag(_ translation: CGSize) {
+        let dx = translation.width
+        let dy = translation.height
+        if abs(dx) > abs(dy) {
+            if dx < -24 {
+                triggerQuickAction(.fold)
+            } else if dx > 24 {
+                triggerQuickAction(.call)
+            }
+        } else if dy < -24 {
+            triggerQuickAction(.raise)
+        }
+    }
+
+    private func triggerQuickAction(_ action: HandActionKind) {
+        guard filteredActions.contains(action) else { return }
+        addAction(action)
     }
 
     private func card(for slot: CardEditingSlot) -> PlayingCard? {
@@ -833,6 +934,12 @@ struct HandRecorderView: View {
         recordedActions.filter { $0.street == selectedStreet }
     }
 
+    private var timelineStreetSections: [PokerStreet] {
+        PokerStreet.allCases.filter { street in
+            recordedActions.contains { $0.street == street }
+        }
+    }
+
     private var streetCommittedByActor: [ActionActor: Double] {
         Dictionary(
             grouping: currentStreetActions,
@@ -844,6 +951,12 @@ struct HandRecorderView: View {
 
     private var currentStreetMaxCommitted: Double {
         streetCommittedByActor.values.max() ?? 0
+    }
+
+    private var isAllInRunoutMode: Bool {
+        let active = actorTurnOrder.filter { !isActorFolded($0) }
+        guard active.count >= 2 else { return false }
+        return active.allSatisfy { remainingStackValue(for: $0) <= 0.001 }
     }
 
     private var filteredActions: [HandActionKind] {
@@ -858,6 +971,27 @@ struct HandRecorderView: View {
 
     private var activeActorSummary: String {
         "\(selectedActor.title) • \(formattedBB(remainingStackValue(for: selectedActor))) behind"
+    }
+
+    private var quickActionGestureStrip: some View {
+        HStack(spacing: 14) {
+            Label("Fold", systemImage: "arrow.left")
+            Label("Call", systemImage: "arrow.right")
+            Label("Raise", systemImage: "arrow.up")
+        }
+        .font(.caption.weight(.semibold))
+        .foregroundStyle(.white.opacity(0.78))
+        .padding(.horizontal, 12)
+        .padding(.vertical, 10)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(AppTheme.backgroundRaised)
+        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+        .gesture(
+            DragGesture(minimumDistance: 24)
+                .onEnded { value in
+                    handleQuickActionDrag(value.translation)
+                }
+        )
     }
 
     private func stackValue(for positionID: String) -> Double {
@@ -1301,6 +1435,7 @@ struct HandRecorderView: View {
         )
         savedHands.insert(snapshot, at: 0)
         HandRecordStorage.save(savedHands)
+        sessionHandsSaved += 1
     }
 
     private func load(_ record: SavedHandRecord) {
